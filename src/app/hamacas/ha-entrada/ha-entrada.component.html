@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-sm">
+    <h3>RA CONTROL DE HAMACAS</h3>
+    <div class="text-center">Sector</div>
+    <div class="form-inline">
+      <div>
+        <button type="button" class="btn btn-danger" (click)="menosSector()"><=</button>
+      </div>
+      <div class="col">
+        <select class="form-control" id="sector" name="sector" [(ngModel)]="sector">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>        
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>     
+          <option value="21">21</option>    
+          <option value="22">22</option>                              
+        </select>
+      </div>
+      <div>
+          <button type="button" class="btn btn-danger" (click)="masSector()">=></button>
+      </div>      
+    </div>
+    <div class="form-group text-center">
+      <label for="fecha">Fecha</label>
+      <input type="date" class="form-control" id="fecha" placeholder="Fecha" name="fecha" [(ngModel)]="fecha">
+    </div>    
+    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="nuevo()">Nuevo Registro</button>
+  </div>
+</div>
+<div class="row mt-4" *ngIf="existeUltFecha(sector)">
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Control del dia {{ fecha }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
+          <p class="card-text">Hamacas: {{ sectorDia.lastHamacas}}</p>
+          <p class="card-text">Sombrillas: {{ sectorDia.lastSombrillas}}</p>        
+          <p class="card-text">Notas: {{ sectorDia.lastObservacion}}</p>                 
+          <a [routerLink]="['/detalle', sectorDia.lastId]" class="card-link">Editar</a>
+        </div>
+      </div>    
+    </div>
+</div>
+<div class="row mt-4" *ngIf="existeUlt(sector)">
+  <div class="col-sm">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Inventario del dia {{ sectorUlt.lastFecha }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
+        <p class="card-text">Hamacas: {{ sectorUlt.lastHamacas}}</p>
+        <p class="card-text">Sombrillas: {{ sectorUlt.lastSombrillas}}</p> 
+        <p class="card-text">Notas: {{ sectorUlt.lastObservacion}}</p>            
+      </div>
+    </div>    
+  </div>
+</div>
