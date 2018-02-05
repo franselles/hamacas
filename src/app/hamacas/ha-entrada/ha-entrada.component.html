@@ -31,20 +31,21 @@
           <p class="card-text">Hamacas: {{ sectorDia.lastHamacas}}</p>
           <p class="card-text">Sombrillas: {{ sectorDia.lastSombrillas}}</p>        
           <p class="card-text">Notas: {{ sectorDia.lastObservacion}}</p>                 
-          <a [routerLink]="['/detalle', sectorDia.lastId]" class="card-link">Editar</a>
+          <a [routerLink]="['/detalle', sectorDia.lastId]" class="btn btn-primary">Editar</a>
         </div>
       </div>    
     </div>
 </div>
 <div class="row mt-4" *ngIf="existeUlt(sector)">
   <div class="col-sm">
-    <div class="card">
+    <div class="card text-white bg-secondary mb-3">
       <div class="card-body">
         <h5 class="card-title">Inventario del día {{ sectorUlt.lastFecha | date: 'dd/MM/yyyy' }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
         <p class="card-text">Hamacas: {{ sectorUlt.lastHamacas}}</p>
         <p class="card-text">Sombrillas: {{ sectorUlt.lastSombrillas}}</p> 
-        <p class="card-text">Notas: {{ sectorUlt.lastObservacion}}</p>            
+        <p class="card-text">Notas: {{ sectorUlt.lastObservacion}}</p> 
+        <a [routerLink]="['/detalle', sectorUlt.lastId]" class="card-link">-</a>           
       </div>
     </div>    
   </div>
