@@ -22,6 +22,12 @@ export class HaDetalleComponent implements OnInit {
     private hamacasService: HamacasService, private global: Global, private location: Location) { }
 
   ngOnInit() {
+    window.location.hash = 'no-back-button';
+    window.location.hash = 'Again-No-back-button'; // chrome
+    window.onhashchange = function() {
+      window.location.hash = 'no-back-button';
+    };
+
     this.hamacasForm = this.fb.group({
       sector: ['', Validators.required],
       fecha: ['', Validators.required],
@@ -79,15 +85,15 @@ export class HaDetalleComponent implements OnInit {
       this.hamacasService.updateHamaca(this.id, data.value)
         .subscribe(() => {
           console.log('Actializado');
-          // this.router.navigate(['/']);
-          this.location.back();
+          this.router.navigate(['/']);
+          // this.location.back();
         }, err => console.log('Error updating : ' + err));
     } else {
       this.hamacasService.addHamaca(data.value)
         .subscribe(() => {
           console.log('Creado');
-          // this.router.navigate(['/']);
-          this.location.back();
+          this.router.navigate(['/']);
+          // this.location.back();
         }, err => console.log('Error creating : ' + err));
     }
   }
@@ -98,8 +104,8 @@ export class HaDetalleComponent implements OnInit {
    */
 
   onCancelar() {
-    // this.router.navigate(['/']);
-    this.location.back();
+    this.router.navigate(['/']);
+    // this.location.back();
   }
 
   /*
@@ -113,7 +119,8 @@ export class HaDetalleComponent implements OnInit {
         console.log('Borrado');
         // this.router.navigate(['/']);
         this.hamacasService.cargaUltimos(this.global.fecha);
-        this.location.back();
+        this.router.navigate(['/']);
+        // this.location.back();
       }, error => console.error('Error removing : ' + error));
     }
   }

@@ -13,8 +13,13 @@ export class HaListaComponent implements OnInit {
   constructor(private hamacasService: HamacasService) { }
 
   ngOnInit() {
+    window.location.hash = 'no-back-button';
+    window.location.hash = 'Again-No-back-button'; // chrome
+    window.onhashchange = function() {
+      window.location.hash = 'no-back-button';
+    };
+
     this.sectorUlt = this.hamacasService.hamacasUltimo;
-    console.log(this.sectorUlt);
   }
 
 }

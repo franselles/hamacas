@@ -19,7 +19,6 @@ export class HaEntradaComponent implements OnInit {
   constructor(private global: Global, private hamacasService: HamacasService, private router: Router, private swUpdate: SwUpdate) { }
 
   ngOnInit() {
-
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
           if (confirm('Hay una nueva version. Actualizar?')) {
@@ -27,6 +26,12 @@ export class HaEntradaComponent implements OnInit {
           }
       });
     }
+
+    window.location.hash = 'no-back-button';
+    window.location.hash = 'Again-No-back-button'; // chrome
+    window.onhashchange = function() {
+      window.location.hash = 'no-back-button';
+    };
 
     this.fecha = this.global.fecha;
     this.sector = this.global.sector;
