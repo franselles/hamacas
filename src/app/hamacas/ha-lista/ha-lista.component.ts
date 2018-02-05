@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HamacasService } from '../../shared/hamacas.service';
 
 @Component({
   selector: 'app-ha-lista',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HaListaComponent implements OnInit {
 
-  constructor() { }
+  public sectorUlt: any[] = [];
+
+  constructor(private hamacasService: HamacasService) { }
 
   ngOnInit() {
+    this.sectorUlt = this.hamacasService.hamacasUltimo;
+    console.log(this.sectorUlt);
   }
 
 }

@@ -45,46 +45,52 @@
     <label for="h_retiradas">
       Hamacas retiradas
     </label>
-    <input
-      type="number"
-      placeholder="Introduce hamacas retiradas"
-      name="h_retiradas"
-      formControlName="h_retiradas"
-      id="h_retiradas"
-      class="form-control"
-      readonly>
-      <button type="button" class="btn btn-primary" (click)="masHret(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
-      <button type="button" class="btn btn-danger" (click)="menosHret(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>
+    <div class="input-group">
+      <input
+        type="number"
+        placeholder="Introduce hamacas retiradas"
+        name="h_retiradas"
+        formControlName="h_retiradas"
+        id="h_retiradas"
+        class="form-control"
+        readonly>
+        <button type="button" class="btn btn-primary" (click)="masHret(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+        <button type="button" class="btn btn-danger" (click)="menosHret(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>
+    </div>
   </div>
+  <div class="form-group">
+      <label for="h_rotas">
+        Hamacas rotas
+      </label>
+      <div class="input-group">
+        <input
+          type="number"
+          placeholder="Introduce hamacas rotas"
+          name="h_repuestas"
+          formControlName="h_rotas"
+          id="h_rotas"
+          class="form-control"
+          readonly>
+          <button type="button" class="btn btn-primary" (click)="masHrot(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+          <button type="button" class="btn btn-danger" (click)="menosHrot(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>  
+      </div>      
+    </div>   
   <div class="form-group">
     <label for="h_repuestas">
       Hamacas repuestas
     </label>
-    <input
-      type="number"
-      placeholder="Introduce hamacas repuestas"
-      name="h_repuestas"
-      formControlName="h_repuestas"
-      id="h_repuestas"
-      class="form-control"
-      readonly>
-      <button type="button" class="btn btn-primary" (click)="masHrep(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
-      <button type="button" class="btn btn-danger" (click)="menosHrep(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>      
-  </div> 
-  <div class="form-group">
-    <label for="h_rotas">
-      Hamacas rotas
-    </label>
-    <input
-      type="number"
-      placeholder="Introduce hamacas rotas"
-      name="h_repuestas"
-      formControlName="h_rotas"
-      id="h_rotas"
-      class="form-control"
-      readonly>
-      <button type="button" class="btn btn-primary" (click)="masHrot(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
-      <button type="button" class="btn btn-danger" (click)="menosHrot(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>        
+    <div class="input-group">
+      <input
+        type="number"
+        placeholder="Introduce hamacas repuestas"
+        name="h_repuestas"
+        formControlName="h_repuestas"
+        id="h_repuestas"
+        class="form-control"
+        readonly>
+        <button type="button" class="btn btn-primary" (click)="masHrep(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+        <button type="button" class="btn btn-danger" (click)="menosHrep(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>     
+    </div> 
   </div> 
   <div class="form-group">
       <label for="sombrillas">
@@ -102,46 +108,52 @@
     <label for="s_retiradas">
       Sombrillas retiradas
     </label>
-    <input
-      type="number"
-      placeholder="Introduce sombrillas retiradas"
-      name="s_retiradas"
-      formControlName="s_retiradas"
-      id="s_retiradas"
-      class="form-control"
-      readonly>
-      <button type="button" class="btn btn-primary" (click)="masSret(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
-      <button type="button" class="btn btn-danger" (click)="menosSret(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>      
+    <div class="input-group">
+      <input
+        type="number"
+        placeholder="Introduce sombrillas retiradas"
+        name="s_retiradas"
+        formControlName="s_retiradas"
+        id="s_retiradas"
+        class="form-control"
+        readonly>
+        <button type="button" class="btn btn-primary" (click)="masSret(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+        <button type="button" class="btn btn-danger" (click)="menosSret(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>    
+    </div>  
   </div>
+  <div class="form-group">
+      <label for="s_rotas">
+        Sombrillas rotas
+      </label>
+      <div class="input-group">
+        <input
+          type="number"
+          placeholder="Introduce sombrillas rotas"
+          name="s_rotas"
+          formControlName="s_rotas"
+          id="s_rotas"
+          class="form-control"
+          readonly>
+          <button type="button" class="btn btn-primary" (click)="masSrot(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+          <button type="button" class="btn btn-danger" (click)="menosSrot(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>
+      </div>          
+    </div>   
   <div class="form-group">
     <label for="s_repuestas">
       Sombrillas repuestas
     </label>
-    <input
-      type="number"
-      placeholder="Introduce sombrillas repuestas"
-      name="s_repuestas"
-      formControlName="s_repuestas"
-      id="s_repuestas"
-      class="form-control"
-      readonly>
-      <button type="button" class="btn btn-primary" (click)="masSrep(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
-      <button type="button" class="btn btn-danger" (click)="menosSrep(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>         
-  </div> 
-  <div class="form-group">
-    <label for="s_rotas">
-      Sombrillas rotas
-    </label>
-    <input
-      type="number"
-      placeholder="Introduce sombrillas rotas"
-      name="s_rotas"
-      formControlName="s_rotas"
-      id="s_rotas"
-      class="form-control"
-      readonly>
-      <button type="button" class="btn btn-primary" (click)="masSrot(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
-      <button type="button" class="btn btn-danger" (click)="menosSrot(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>          
+    <div class="input-group">
+      <input
+        type="number"
+        placeholder="Introduce sombrillas repuestas"
+        name="s_repuestas"
+        formControlName="s_repuestas"
+        id="s_repuestas"
+        class="form-control"
+        readonly>
+        <button type="button" class="btn btn-primary" (click)="masSrep(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+        <button type="button" class="btn btn-danger" (click)="menosSrep(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>   
+    </div>      
   </div> 
   <div class="form-group">
     <div>
@@ -149,16 +161,17 @@
     </div>
     <textarea
       name="observacion"
-      rows="10"
-      cols="50"
+      rows="3"
       class="form-control" 
       id="observacion"      
       formControlName="observacion">
     </textarea>
 </div>     
-  <div>
-    <button type="submit" [disabled]="!hamacasForm.valid" class="btn btn-success">Aceptar</button>
-    <button type="button" (click)="onCancelar()" class="btn btn-warning">Cancelar</button>
-    <button type="button" (click)="onBorrar(hamacasForm)" class="btn btn-danger">BORRAR</button>
+  <div class="row">
+    <div class="col text-center">
+      <button type="submit" [disabled]="!hamacasForm.valid" class="btn btn-success btn-lg">ACEPTAR</button>
+      <button type="button" (click)="onCancelar()" class="btn btn-warning btn-lg">CANCELAR</button>
+      <button type="button" (click)="onBorrar(hamacasForm)" class="btn btn-danger btn-lg">BORRAR</button>
+    </div>
   </div>
 </form>
