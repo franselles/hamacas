@@ -1,0 +1,17 @@
+{
+    "short_name": "hamacas",
+    "name": "hamacas",
+    "icons": [
+      {
+        "src":"/assets/icon512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }       
+    ],
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/"
+  }

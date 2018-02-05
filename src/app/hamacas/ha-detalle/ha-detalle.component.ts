@@ -119,110 +119,122 @@ export class HaDetalleComponent implements OnInit {
   }
 
   masHret(value: any) {
-    const t = Number(value.h_retiradas) + 1;
+    const t = Number(value.h_retiradas);
     const h = Number(value.hamacas);
     this.hamacasForm.patchValue({
-      hamacas: h - t,
-      h_retiradas: t
+      hamacas: h - 1,
+      h_retiradas: t + 1
     });
   }
 
   menosHret(value: any) {
-    const t = Number(value.h_retiradas) - 1;
+    const t = Number(value.h_retiradas);
     const h = Number(value.hamacas);
-    this.hamacasForm.patchValue({
-      hamacas: h + t,
-      h_retiradas: t
-    });
+    if (t > 0) {
+      this.hamacasForm.patchValue({
+        hamacas: h + 1,
+        h_retiradas: t - 1
+      });
+    }
   }
 
   masSret(value: any) {
-    const t = Number(value.s_retiradas) + 1;
+    const t = Number(value.s_retiradas);
     const h = Number(value.sombrillas);
     this.hamacasForm.patchValue({
-      sombrillas: h - t,
-      s_retiradas: t
+      sombrillas: h - 1,
+      s_retiradas: t + 1
     });
   }
 
   menosSret(value: any) {
-    const t = Number(value.s_retiradas) - 1;
+    const t = Number(value.s_retiradas);
     const h = Number(value.sombrillas);
-    this.hamacasForm.patchValue({
-      sombrillas: h + t,
-      s_retiradas: t
-    });
+    if (t > 0) {
+      this.hamacasForm.patchValue({
+        sombrillas: h + 1,
+        s_retiradas: t - 1
+      });
+    }
   }
 
   masHrot(value: any) {
-    const t = Number(value.h_rotas) + 1;
+    const t = Number(value.h_rotas);
     const h = Number(value.hamacas);
     this.hamacasForm.patchValue({
-      hamacas: h - t,
-      h_rotas: t
+      hamacas: h - 1,
+      h_rotas: t + 1
     });
   }
 
   menosHrot(value: any) {
-    const t = Number(value.h_rotas) - 1;
+    const t = Number(value.h_rotas);
     const h = Number(value.hamacas);
-    this.hamacasForm.patchValue({
-      hamacas: h + t,
-      h_rotas: t
-    });
+    if (t > 0) {
+      this.hamacasForm.patchValue({
+        hamacas: h + 1,
+        h_rotas: t - 1
+      });
+    }
   }
 
   masSrot(value: any) {
-    const t = Number(value.s_rotas) + 1;
+    const t = Number(value.s_rotas);
     const h = Number(value.sombrillas);
     this.hamacasForm.patchValue({
-      sombrillas: h - t,
-      s_rotas: t
+      sombrillas: h - 1,
+      s_rotas: t + 1
     });
   }
 
   menosSrot(value: any) {
-    const t = Number(value.s_rotas) - 1;
+    const t = Number(value.s_rotas);
     const h = Number(value.sombrillas);
-    this.hamacasForm.patchValue({
-      sombrillas: h + t,
-      s_rotas: t
-    });
+    if (t > 0) {
+      this.hamacasForm.patchValue({
+        sombrillas: h + 1,
+        s_rotas: t - 1
+      });
+    }
   }
 
   masHrep(value: any) {
-    const t = Number(value.h_repuestas) + 1;
+    const t = Number(value.h_repuestas);
     const h = Number(value.hamacas);
     this.hamacasForm.patchValue({
-      hamacas: h + t,
-      h_repuestas: t
+      hamacas: h + 1,
+      h_repuestas: t + 1
     });
   }
 
   menosHrep(value: any) {
-    const t = Number(value.h_repuestas) - 1;
+    const t = Number(value.h_repuestas);
     const h = Number(value.hamacas);
-    this.hamacasForm.patchValue({
-      hamacas: h - t,
-      h_repuestas: t
-    });
+    if (t > 0) {
+      this.hamacasForm.patchValue({
+        hamacas: h - 1,
+        h_repuestas: t - 1
+      });
+    }
   }
 
   masSrep(value: any) {
-    const t = Number(value.s_repuestas) + 1;
+    const t = Number(value.s_repuestas);
     const h = Number(value.sombrillas);
     this.hamacasForm.patchValue({
-      sombrillas: h + t,
-      s_repuestas: t
+      sombrillas: h + 1,
+      s_repuestas: t + 1
     });
   }
 
   menosSrep(value: any) {
-    const t = Number(value.s_repuestas) - 1;
+    const t = Number(value.s_repuestas);
     const h = Number(value.sombrillas);
-    this.hamacasForm.patchValue({
-      sombrillas: h - t,
-      s_repuestas: t
-    });
+    if (t > 0) {
+      this.hamacasForm.patchValue({
+        sombrillas: h - 1,
+        s_repuestas: t - 1
+      });
+    }
   }
 }

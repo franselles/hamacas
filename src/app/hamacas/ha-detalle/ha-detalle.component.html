@@ -1,6 +1,3 @@
-<p>
-  ha-detalle works!
-</p>
 <form novalidate [formGroup]="hamacasForm" (ngSubmit)="onSubmit(hamacasForm)">
   <div class="form-group">
     <label for="sector">
@@ -45,18 +42,6 @@
       class="form-control">
   </div>
   <div class="form-group">
-    <label for="sombrillas">
-      Sombrillas
-    </label>
-    <input
-      type="number"
-      placeholder="Introduce sombrillas"
-      name="sombrillas"
-      formControlName="sombrillas"
-      id="sombrillas"
-      class="form-control">
-  </div>
-  <div class="form-group">
     <label for="h_retiradas">
       Hamacas retiradas
     </label>
@@ -68,8 +53,8 @@
       id="h_retiradas"
       class="form-control"
       readonly>
-      <button type="button" class="btn btn-primary" (click)="masHret(hamacasForm.value)">+</button>
-      <button type="button" class="btn btn-danger" (click)="menosHret(hamacasForm.value)">-</button>
+      <button type="button" class="btn btn-primary" (click)="masHret(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+      <button type="button" class="btn btn-danger" (click)="menosHret(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>
   </div>
   <div class="form-group">
     <label for="h_repuestas">
@@ -83,8 +68,8 @@
       id="h_repuestas"
       class="form-control"
       readonly>
-      <button type="button" class="btn btn-primary" (click)="masHrep(hamacasForm.value)">+</button>
-      <button type="button" class="btn btn-danger" (click)="menosHrep(hamacasForm.value)">-</button>      
+      <button type="button" class="btn btn-primary" (click)="masHrep(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+      <button type="button" class="btn btn-danger" (click)="menosHrep(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>      
   </div> 
   <div class="form-group">
     <label for="h_rotas">
@@ -98,9 +83,21 @@
       id="h_rotas"
       class="form-control"
       readonly>
-      <button type="button" class="btn btn-primary" (click)="masHrot(hamacasForm.value)">+</button>
-      <button type="button" class="btn btn-danger" (click)="menosHrot(hamacasForm.value)">-</button>        
+      <button type="button" class="btn btn-primary" (click)="masHrot(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+      <button type="button" class="btn btn-danger" (click)="menosHrot(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>        
   </div> 
+  <div class="form-group">
+      <label for="sombrillas">
+        Sombrillas
+      </label>
+      <input
+        type="number"
+        placeholder="Introduce sombrillas"
+        name="sombrillas"
+        formControlName="sombrillas"
+        id="sombrillas"
+        class="form-control">
+    </div>  
   <div class="form-group">
     <label for="s_retiradas">
       Sombrillas retiradas
@@ -113,8 +110,8 @@
       id="s_retiradas"
       class="form-control"
       readonly>
-      <button type="button" class="btn btn-primary" (click)="masSret(hamacasForm.value)">+</button>
-      <button type="button" class="btn btn-danger" (click)="menosSret(hamacasForm.value)">-</button>      
+      <button type="button" class="btn btn-primary" (click)="masSret(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+      <button type="button" class="btn btn-danger" (click)="menosSret(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>      
   </div>
   <div class="form-group">
     <label for="s_repuestas">
@@ -128,8 +125,8 @@
       id="s_repuestas"
       class="form-control"
       readonly>
-      <button type="button" class="btn btn-primary" (click)="masSrep(hamacasForm.value)">+</button>
-      <button type="button" class="btn btn-danger" (click)="menosSrep(hamacasForm.value)">-</button>         
+      <button type="button" class="btn btn-primary" (click)="masSrep(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+      <button type="button" class="btn btn-danger" (click)="menosSrep(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>         
   </div> 
   <div class="form-group">
     <label for="s_rotas">
@@ -143,8 +140,8 @@
       id="s_rotas"
       class="form-control"
       readonly>
-      <button type="button" class="btn btn-primary" (click)="masSrot(hamacasForm.value)">+</button>
-      <button type="button" class="btn btn-danger" (click)="menosSrot(hamacasForm.value)">-</button>          
+      <button type="button" class="btn btn-primary" (click)="masSrot(hamacasForm.value)"><i class="fas fa-plus-square"></i></button>
+      <button type="button" class="btn btn-danger" (click)="menosSrot(hamacasForm.value)"><i class="fas fa-minus-square"></i></button>          
   </div> 
   <div class="form-group">
     <div>
