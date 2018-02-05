@@ -3,7 +3,7 @@
     <div class="text-center">
       <h4>RA CONTROL DE HAMACAS</h4>      
     </div>
-    <div class="text-center">Sector</div>
+    <div class="text-center">SECTOR</div>
     <div class="form-inline">
       <div>
         <button type="button" class="btn btn-danger" (click)="menosSector()"><i class="fas fa-arrow-circle-left"></i></button>
@@ -16,7 +16,7 @@
       </div>      
     </div>
     <div class="form-group text-center">
-      <label for="fecha">Fecha</label>
+      <label for="fecha">FECHA</label>
       <input type="date" class="form-control" id="fecha" placeholder="Fecha" name="fecha" [(ngModel)]="fecha" style="text-align:center;">
     </div>    
     <button type="button" class="btn btn-primary btn-lg btn-block" (click)="nuevo()"><i class="fas fa-plus-square"></i> Nuevo Registro</button>
@@ -26,7 +26,7 @@
     <div class="col-sm">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Control del dia {{ fecha | date: 'dd/MM/yyyy' }}</h5>
+          <h5 class="card-title">Control del día {{ fecha | date: 'dd/MM/yyyy' }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
           <p class="card-text">Hamacas: {{ sectorDia.lastHamacas}}</p>
           <p class="card-text">Sombrillas: {{ sectorDia.lastSombrillas}}</p>        
@@ -40,7 +40,7 @@
   <div class="col-sm">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Inventario del dia {{ sectorUlt.lastFecha | date: 'dd/MM/yyyy' }}</h5>
+        <h5 class="card-title">Inventario del día {{ sectorUlt.lastFecha | date: 'dd/MM/yyyy' }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
         <p class="card-text">Hamacas: {{ sectorUlt.lastHamacas}}</p>
         <p class="card-text">Sombrillas: {{ sectorUlt.lastSombrillas}}</p> 
