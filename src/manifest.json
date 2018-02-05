@@ -1,6 +1,7 @@
 {
     "short_name": "hamacas",
     "name": "hamacas",
+    "lang": "es",
     "icons": [
       {
         "src":"/assets/icon512.png",

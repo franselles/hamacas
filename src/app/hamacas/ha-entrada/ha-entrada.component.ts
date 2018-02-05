@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Global } from '../../shared/global.services';
 import { HamacasService } from '../../shared/hamacas.service';
 import { Router } from '@angular/router';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-ha-entrada',
@@ -15,9 +16,18 @@ export class HaEntradaComponent implements OnInit {
   public sectorDia: any;
   public sectorUlt: any;
 
-  constructor(private global: Global, private hamacasService: HamacasService, private router: Router) { }
+  constructor(private global: Global, private hamacasService: HamacasService, private router: Router, private swUpdate: SwUpdate) { }
 
   ngOnInit() {
+
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+          if (confirm('Hay una nueva version. Actualizar?')) {
+              window.location.reload();
+          }
+      });
+    }
+
     this.fecha = this.global.fecha;
     this.sector = this.global.sector;
 
