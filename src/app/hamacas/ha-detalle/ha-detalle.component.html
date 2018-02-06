@@ -4,7 +4,7 @@
       <div class="card-header" id="headingOne">
         <h5 class="mb-0">
           <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-            Fecha y sector
+            Sector {{ sSector }}, seleccion fecha
           </button>
         </h5>
       </div>
@@ -22,7 +22,9 @@
               name="sector"
               id="sector"
               formControlName="sector"
-              class="form-control">  
+              class="form-control"
+              readonly
+              style="text-align:center;">  
               <div *ngIf="hamacasForm.controls['sector'].hasError('required') && hamacasForm.controls['sector'].touched" class="alert alert-warning" role="warning">
                 Campo sector necesario
               </div>           
