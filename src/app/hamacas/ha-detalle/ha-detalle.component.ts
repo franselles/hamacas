@@ -17,6 +17,7 @@ export class HaDetalleComponent implements OnInit {
   public hamaca: Hamaca;
   public enEdicion: boolean;
   private id: string;
+  private sectorUlt: any;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private fb: FormBuilder,
     private hamacasService: HamacasService, private global: Global, private location: Location) { }
@@ -58,6 +59,15 @@ export class HaDetalleComponent implements OnInit {
         sector: this.global.sector,
         fecha: this.global.fecha
       });
+
+      this.sectorUlt = this.hamacasService.hamacasUltimo.find(x => x._id === this.global.sector);
+
+      if (this.sectorUlt) {
+        this.hamacasForm.patchValue({
+          hamacas: this.sectorUlt.lastHamacas,
+          sombrillas: this.sectorUlt.lastSombrillas
+        });
+      }
     }
   }
 

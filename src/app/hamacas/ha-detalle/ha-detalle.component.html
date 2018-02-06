@@ -1,34 +1,53 @@
 <form novalidate [formGroup]="hamacasForm" (ngSubmit)="onSubmit(hamacasForm)">
-  <div class="form-group">
-    <label for="sector">
-      Sector
-    </label>
-    <input
-      type="number"
-      placeholder="Introduce sector"
-      name="sector"
-      id="sector"
-      formControlName="sector"
-      class="form-control">  
-      <div *ngIf="hamacasForm.controls['sector'].hasError('required') && hamacasForm.controls['sector'].touched" class="alert alert-warning" role="warning">
-        Campo sector necesario
-      </div>           
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Fecha y sector
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+         
+          <div class="form-group">
+            <label for="sector">
+              Sector
+            </label>
+            <input
+              type="number"
+              placeholder="Introduce sector"
+              name="sector"
+              id="sector"
+              formControlName="sector"
+              class="form-control">  
+              <div *ngIf="hamacasForm.controls['sector'].hasError('required') && hamacasForm.controls['sector'].touched" class="alert alert-warning" role="warning">
+                Campo sector necesario
+              </div>           
+          </div>
+          <div class="form-group">
+            <label for="fecha">
+              Fecha
+            </label>
+            <input
+              type="date"
+              placeholder="Introduce fecha"
+              name="fecha"
+              id="fecha"
+              class="form-control"        
+              formControlName="fecha">
+              <div *ngIf="hamacasForm.controls['fecha'].hasError('required') && hamacasForm.controls['fecha'].touched" class="alert alert-warning" role="warning">
+                Campo fecha necesario
+              </div>       
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="fecha">
-      Fecha
-    </label>
-    <input
-      type="date"
-      placeholder="Introduce fecha"
-      name="fecha"
-      id="fecha"
-      class="form-control"        
-      formControlName="fecha">
-      <div *ngIf="hamacasForm.controls['fecha'].hasError('required') && hamacasForm.controls['fecha'].touched" class="alert alert-warning" role="warning">
-        Campo fecha necesario
-      </div>       
-  </div>
+
   <div class="form-group">
     <label for="hamacas">
       Hamacas

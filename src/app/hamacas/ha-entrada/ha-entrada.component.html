@@ -19,7 +19,7 @@
       <label for="fecha">FECHA</label>
       <input type="date" class="form-control" id="fecha" placeholder="Fecha" name="fecha" [(ngModel)]="fecha" style="text-align:center;">
     </div>    
-    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="nuevo()"><i class="fas fa-plus-square"></i> Nuevo Registro</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="nuevo()" [disabled]="existeUltFecha(sector)"><i class="fas fa-plus-square"></i> Nuevo Registro</button>
   </div>
 </div>
 <div class="row mt-4" *ngIf="existeUltFecha(sector)">
