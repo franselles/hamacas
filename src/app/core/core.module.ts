@@ -7,9 +7,11 @@ import { HamacasModule } from '../hamacas/hamacas.module';
 import { HaDetalleComponent } from '../hamacas/ha-detalle/ha-detalle.component';
 import { HaListaComponent } from '../hamacas/ha-lista/ha-lista.component';
 import { InfoComponent } from './info/info.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 const routes: Routes = [
-  { path: '', component: HaEntradaComponent },
+  { path: '', component: InicioComponent },
+  { path: 'entrada', component: HaEntradaComponent },
   { path: 'detalle', component: HaDetalleComponent },
   { path: 'detalle/:id', component: HaDetalleComponent },
   { path: 'lista', component: HaListaComponent },
@@ -23,6 +25,6 @@ const routes: Routes = [
     HamacasModule,
     RouterModule.forRoot(routes)
   ],
-  declarations: [CoreComponent, InfoComponent]
+  declarations: [CoreComponent, InfoComponent, InicioComponent]
 })
 export class CoreModule { }

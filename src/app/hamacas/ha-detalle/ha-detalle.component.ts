@@ -98,14 +98,14 @@ export class HaDetalleComponent implements OnInit {
       this.hamacasService.updateHamaca(this.id, data.value)
         .subscribe(() => {
           console.log('Actializado');
-          this.router.navigate(['/']);
+          this.router.navigate(['/entrada']);
           // this.location.back();
         }, err => console.log('Error updating : ' + err));
     } else {
       this.hamacasService.addHamaca(data.value)
         .subscribe(() => {
           console.log('Creado');
-          this.router.navigate(['/']);
+          this.router.navigate(['/entrada']);
           // this.location.back();
         }, err => console.log('Error creating : ' + err));
     }
@@ -117,7 +117,7 @@ export class HaDetalleComponent implements OnInit {
    */
 
   onCancelar() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/entrada']);
     // this.location.back();
   }
 
@@ -132,7 +132,7 @@ export class HaDetalleComponent implements OnInit {
         console.log('Borrado');
         // this.router.navigate(['/']);
         this.hamacasService.cargaUltimos(this.global.fecha);
-        this.router.navigate(['/']);
+        this.router.navigate(['/entrada']);
         // this.location.back();
       }, error => console.error('Error removing : ' + error));
     }
