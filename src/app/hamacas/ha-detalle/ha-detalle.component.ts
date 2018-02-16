@@ -21,6 +21,7 @@ export class HaDetalleComponent implements OnInit {
   public sSector: number;
   public desHamacas = true;
   public desSombrillas = true;
+  public verBorrar = false;
   // private numHamacas: number;
   // private numSombrillas: number;
 

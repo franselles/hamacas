@@ -83,6 +83,11 @@ app.post("/api/hamacas", function(req, res) {
     handleError(res, "Invalid nombre input", "Must provide a nombre.", 400);
   } */
 
+  var splitFecha = req.body.fecha.split("-");
+
+  newHamaca.year = splitFecha[0];
+  newHamaca.month = splitFecha[1];
+
   db.collection(HAMACAS_COLLECTION).insertOne(newHamaca, function(err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to create new hamacas.");

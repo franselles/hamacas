@@ -9,6 +9,7 @@ import { HamacasService } from '../shared/hamacas.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BdService } from '../shared/bd.services';
 import { RouterModule } from '@angular/router';
+import { HaRotasComponent } from './ha-rotas/ha-rotas.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HaEntradaComponent,
     HaDetalleComponent,
-    HaListaComponent
+    HaListaComponent,
+    HaRotasComponent
   ],
   providers: [
     Global,

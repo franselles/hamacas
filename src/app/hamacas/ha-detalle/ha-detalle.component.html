@@ -44,7 +44,7 @@
                 Campo fecha necesario
               </div>       
           </div>
-
+          <button type="button" class="btn btn-primary" (click)="verBorrar = true">Borrar <i class="fas fa-pencil-alt"></i></button>
         </div>
       </div>
     </div>
@@ -212,7 +212,7 @@
     <div class="col text-center">
       <button type="submit" [disabled]="!hamacasForm.valid" class="btn btn-success">ACEPTAR</button>
       <button type="button" (click)="onCancelar()" class="btn btn-warning">CANCELAR</button>
-      <button type="button" (click)="onBorrar(hamacasForm)" class="btn btn-danger">BORRAR</button>
+      <button type="button" (click)="onBorrar(hamacasForm)" class="btn btn-danger" *ngIf="verBorrar">BORRAR</button>
     </div>
   </div>
 </form>
