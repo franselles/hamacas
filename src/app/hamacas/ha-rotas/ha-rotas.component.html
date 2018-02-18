@@ -26,27 +26,57 @@
     </div>    
   </div>
 </div>
-<div class="row mt-4" *ngIf="existeRotaMes(sector)">
-    <div class="col-sm">
-      <div class="card text-white bg-info mb-3">
-        <div class="card-body">
-          <h5 class="card-title">Rotas en el mes {{ fecha | date: 'MM' }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
-          <p class="card-text">Hamacas: {{ sectorMes?.total_h_rotas }}</p>
-          <p class="card-text">Sombrillas: {{  sectorMes?.total_s_rotas }}</p>               
-        </div>
-      </div>    
-    </div>
-</div>
-<div class="row mt-4" *ngIf="existeRotaAno(sector)">
+<div class="row">
   <div class="col-sm">
-    <div class="card text-white bg-secondary mb-3">
-      <div class="card-body">
-        <h5 class="card-title">Rotas en el año {{ fecha | date: 'yyyy' }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
-        <p class="card-text">Hamacas: {{ sectorAno?.total_h_rotas }}</p>
-        <p class="card-text">Sombrillas: {{  sectorAno?.total_s_rotas }}</p>             
-      </div>
-    </div>    
+    <div class="text-center">
+      <h5>MENSUAL</h5>      
+    </div>
   </div>
+  <table class="table" *ngIf="existeRotaMes(sector)">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ROTAS</th>
+        <th scope="col">MES</th>
+        <th scope="col">{{ fecha | date: 'MM' }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Hamacas</td>
+        <td>{{ sectorMes?.total_h_rotas }}</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Sombrillas</td>
+        <td>{{  sectorMes?.total_s_rotas }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="col-sm">
+    <div class="text-center">
+      <h5>ANUAL</h5>      
+    </div>
+  </div>
+  <table class="table" *ngIf="existeRotaAno(sector)">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">ROTAS</th>
+        <th scope="col">AÑO</th>
+        <th scope="col">{{ fecha | date: 'yyyy' }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Hamacas</td>
+        <td>{{ sectorAno?.total_h_rotas }}</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Sombrillas</td>
+        <td>{{  sectorAno?.total_s_rotas }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

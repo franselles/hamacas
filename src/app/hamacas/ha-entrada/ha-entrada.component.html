@@ -27,7 +27,6 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Control del día {{ fecha | date: 'dd/MM/yyyy' }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
           <p class="card-text">Hamacas: {{ sectorDia.lastHamacas}}</p>
           <p class="card-text">Sombrillas: {{ sectorDia.lastSombrillas}}</p>        
           <p class="card-text">Notas: {{ sectorDia.lastObservacion}}</p>                 
@@ -41,7 +40,6 @@
     <div class="card text-white bg-secondary mb-3">
       <div class="card-body">
         <h5 class="card-title">Inventario del día {{ sectorUlt.lastFecha | date: 'dd/MM/yyyy' }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
         <p class="card-text">Hamacas: {{ sectorUlt.lastHamacas}}</p>
         <p class="card-text">Sombrillas: {{ sectorUlt.lastSombrillas}}</p> 
         <p class="card-text">Notas: {{ sectorUlt.lastObservacion}}</p> 
