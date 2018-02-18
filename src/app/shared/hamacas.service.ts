@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { BdService } from './../shared/bd.services';
-import { Hamaca } from './models';
+import { Hamaca, Acumulados } from './models';
 
 @Injectable()
 export class HamacasService {
 
   public hamacasUltimo: any[] = [];
   public hamacasUltimoFecha: any[] = [];
+
+  public acumuladosMes: Acumulados[] = [];
+  public acumuladosAno: Acumulados[] = [];
 
   BASE_URL: string;
 
@@ -26,6 +29,14 @@ export class HamacasService {
 
   getHamaca(id: string | number) {
     return this.http.get(this.BASE_URL + 'edita/' + id);
+  }
+
+  getAcumuladosMes(month: string, year: string) {
+    return this.http.get(this.BASE_URL + 'rotas/total/mes/' + month + '/' + year);
+  }
+
+  getAcumuladosAno(year: string) {
+    return this.http.get(this.BASE_URL + 'rotas/total/ano/' + year);
   }
 
   addHamaca(hamaca: Hamaca) {
@@ -51,6 +62,22 @@ export class HamacasService {
     this.getHamacasUltimosFecha(fecha).subscribe(
       (data: any[]) => {
         this.hamacasUltimoFecha = data;
+      },
+      err => console.log(err)
+    );
+  }
+
+  cargaAcumulados(mes: string, ano: string) {
+    this.getAcumuladosMes(mes, ano).subscribe(
+      (data: Acumulados[]) => {
+        this.acumuladosMes = data;
+      },
+      err => console.log(err)
+    );
+
+    this.getAcumuladosAno(ano).subscribe(
+      (data: Acumulados[]) => {
+        this.acumuladosAno = data;
       },
       err => console.log(err)
     );

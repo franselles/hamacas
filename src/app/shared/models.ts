@@ -12,3 +12,13 @@ export interface Hamaca {
     s_repuestas: number;
     observacion: string;
 }
+
+export interface Acumulados {
+    _id?: number;
+    total_h_rotas: number;
+    total_h_retiradas: number;
+    total_h_repuestas: number;
+    total_s_rotas: number;
+    total_s_retiradas: number;
+    total_s_repuestas: number;
+}

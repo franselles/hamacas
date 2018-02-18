@@ -74,4 +74,7 @@ export class HaEntradaComponent implements OnInit {
     this.router.navigate(['/detalle']);
   }
 
+  actualizaFecha() {
+    this.hamacasService.cargaUltimos(this.fecha);
+  }
 }

@@ -217,6 +217,67 @@ app.delete("/api/hamacas/:id", function(req, res) {
   });
 });
 
+/* Abrimos totales hasta mes en el año */
+app.get("/api/hamacas/rotas/total/mes/:month/:year", function(req, res) {
+  db.collection(HAMACAS_COLLECTION).aggregate(
+    [
+      {
+        $match : { 
+          month : {$lte: req.params.month},
+          year: req.params.year
+         }
+      },
+      {
+        $sort : { sector: -1, fecha: 1 }
+      },
+      {
+        $group: {
+          _id: "$sector",
+          total_h_rotas: {$sum: "$h_rotas"},
+          total_h_retiradas: {$sum: "$h_retiradas"}, 
+          total_h_repuestas: {$sum: "$h_repuestas"},                   
+          total_s_rotas: {$sum: "$s_rotas"},
+          total_s_retiradas: {$sum: "$s_retiradas"}, 
+          total_s_repuestas: {$sum: "$s_repuestas"},             
+      }}
+    ], function(err, docs) {
+        if (err) {
+          handleError(res, err.message, "Failed to get aggregate del dia.");
+        } else {
+          res.status(200).json(docs);
+        }
+    });
+});
 
 
+/* Abrimos totales en el año */
+app.get("/api/hamacas/rotas/total/ano/:year", function(req, res) {
+  db.collection(HAMACAS_COLLECTION).aggregate(
+    [
+      {
+        $match : { 
+          year: req.params.year
+         }
+      },
+      {
+        $sort : { sector: -1, fecha: 1 }
+      },
+      {
+        $group: {
+          _id: "$sector",
+          total_h_rotas: {$sum: "$h_rotas"},
+          total_h_retiradas: {$sum: "$h_retiradas"}, 
+          total_h_repuestas: {$sum: "$h_repuestas"},                   
+          total_s_rotas: {$sum: "$s_rotas"},
+          total_s_retiradas: {$sum: "$s_retiradas"}, 
+          total_s_repuestas: {$sum: "$s_repuestas"},             
+      }}
+    ], function(err, docs) {
+        if (err) {
+          handleError(res, err.message, "Failed to get aggregate del dia.");
+        } else {
+          res.status(200).json(docs);
+        }
+    });
+});
 

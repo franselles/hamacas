@@ -4,13 +4,49 @@
   </div>
 </div>
 <div class="row">
-<div class="col-sm">
-  <div class="card text-black bg-warning mb-3">
-    <div class="card-header">Inventario rotas</div>
-    <div class="card-body">
-      <h5 class="card-title">Hamacas y sombrillas</h5>
-      <p class="card-text">XXXXX</p>   
+  <div class="col-sm">
+    <div class="text-center">
+      <h4>ROTAS</h4>      
     </div>
+    <div class="text-center">SECTOR</div>
+    <div class="form-inline">
+      <div>
+        <button type="button" class="btn btn-danger" (click)="menosSector()"><i class="fas fa-arrow-circle-left"></i></button>
+      </div>
+      <div class="col">
+          <input type="text" class="form-control" id="sector" placeholder="Fecha" name="sector" [(ngModel)]="sector" readonly style="text-align:center;">        
+      </div>
+      <div>
+          <button type="button" class="btn btn-danger" (click)="masSector()"><i class="fas fa-arrow-alt-circle-right"></i></button>
+      </div>      
+    </div>
+    <div class="form-group text-center">
+      <label for="fecha">FECHA</label>
+      <input type="date" class="form-control" id="fecha" placeholder="Fecha" name="fecha" [(ngModel)]="fecha" style="text-align:center;" (change)="actualizaFecha()">
+    </div>    
   </div>
 </div>
+<div class="row mt-4" *ngIf="existeRotaMes(sector)">
+    <div class="col-sm">
+      <div class="card text-white bg-info mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Rotas en el mes {{ fecha | date: 'MM' }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
+          <p class="card-text">Hamacas: {{ sectorMes?.total_h_rotas }}</p>
+          <p class="card-text">Sombrillas: {{  sectorMes?.total_s_rotas }}</p>               
+        </div>
+      </div>    
+    </div>
+</div>
+<div class="row mt-4" *ngIf="existeRotaAno(sector)">
+  <div class="col-sm">
+    <div class="card text-white bg-secondary mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Rotas en el año {{ fecha | date: 'yyyy' }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Sector {{ sector }}</h6>
+        <p class="card-text">Hamacas: {{ sectorAno?.total_h_rotas }}</p>
+        <p class="card-text">Sombrillas: {{  sectorAno?.total_s_rotas }}</p>             
+      </div>
+    </div>    
+  </div>
 </div>

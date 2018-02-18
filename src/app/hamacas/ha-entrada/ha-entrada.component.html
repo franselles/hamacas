@@ -17,7 +17,7 @@
     </div>
     <div class="form-group text-center">
       <label for="fecha">FECHA</label>
-      <input type="date" class="form-control" id="fecha" placeholder="Fecha" name="fecha" [(ngModel)]="fecha" style="text-align:center;">
+      <input type="date" class="form-control" id="fecha" placeholder="Fecha" name="fecha" [(ngModel)]="fecha" style="text-align:center;" (change)="actualizaFecha()">
     </div>    
     <button type="button" class="btn btn-primary btn-lg btn-block" (click)="nuevo()" [disabled]="existeUltFecha(sector)"><i class="fas fa-plus-square"></i> Nuevo Registro</button>
   </div>
@@ -45,7 +45,7 @@
         <p class="card-text">Hamacas: {{ sectorUlt.lastHamacas}}</p>
         <p class="card-text">Sombrillas: {{ sectorUlt.lastSombrillas}}</p> 
         <p class="card-text">Notas: {{ sectorUlt.lastObservacion}}</p> 
-        <a [routerLink]="['/detalle', sectorUlt.lastId]" class="card-link">-</a>           
+        <a [routerLink]="['/detalle', sectorUlt.lastId]" class="card-link">o</a>           
       </div>
     </div>    
   </div>
