@@ -1,6 +1,10 @@
 <div class="row">
-  <div  class="alert alert-success col-sm" role="alert">
-    <a [routerLink]="['/']"><i class="fas fa-arrow-alt-circle-left fa-3x"></i></a>    
+  <div class="col-sm">
+    <div class="alert alert-danger col-sm" role="alert">
+      <a [routerLink]="['/']">
+        <i class="fas fa-chevron-left fa-2x"></i>
+      </a>
+    </div>
   </div>
 </div>
 <div class="row">
@@ -10,18 +14,19 @@
         <tr>
           <th scope="col">Sector</th>
           <th>Hamacas</th>
-          <th>Sombrillas</th>          
+          <th>Sombrillas</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of sectorUlt">
           <th scope="row">
-            {{ item?._id}} <br>
+            {{ item?._id}}
+            <br>
             <span class="text-success">{{ item?.lastFecha | date: 'dd/MM/yyyy' }}</span>
           </th>
           <td>
             {{ item?.lastHamacas }}
-           
+
           </td>
           <td>
             {{ item?.lastSombrillas }}
@@ -29,5 +34,5 @@
         </tr>
       </tbody>
     </table>
-  </div>    
+  </div>
 </div>

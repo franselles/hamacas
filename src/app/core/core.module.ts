@@ -9,6 +9,7 @@ import { HaListaComponent } from '../hamacas/ha-lista/ha-lista.component';
 import { InfoComponent } from './info/info.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { HaRotasComponent } from '../hamacas/ha-rotas/ha-rotas.component';
+import { CloseMenuDirective } from './close-menu.directive';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -27,6 +28,6 @@ const routes: Routes = [
     HamacasModule,
     RouterModule.forRoot(routes)
   ],
-  declarations: [CoreComponent, InfoComponent, InicioComponent]
+  declarations: [CoreComponent, InfoComponent, InicioComponent, CloseMenuDirective]
 })
 export class CoreModule { }

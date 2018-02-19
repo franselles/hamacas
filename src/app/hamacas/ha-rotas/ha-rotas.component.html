@@ -1,82 +1,95 @@
 <div class="row">
-  <div  class="alert alert-info col-sm" role="alert">
-    <a [routerLink]="['/']"><i class="fas fa-arrow-alt-circle-left fa-3x"></i></a>    
+  <div class="col-sm">
+    <div class="alert alert-danger col-sm" role="alert">
+      <a [routerLink]="['/']">
+        <i class="fas fa-chevron-left fa-2x"></i>
+      </a>
+    </div>
   </div>
 </div>
 <div class="row">
   <div class="col-sm">
     <div class="text-center">
-      <h4>ROTAS</h4>      
+      <h4>ROTAS</h4>
     </div>
     <div class="text-center">SECTOR</div>
     <div class="form-inline">
       <div>
-        <button type="button" class="btn btn-danger" (click)="menosSector()"><i class="fas fa-arrow-circle-left"></i></button>
+        <button type="button" class="btn btn-danger" (click)="menosSector()">
+          <i class="fas fa-arrow-circle-left"></i>
+        </button>
       </div>
       <div class="col">
-          <input type="text" class="form-control" id="sector" placeholder="Fecha" name="sector" [(ngModel)]="sector" readonly style="text-align:center;">        
+        <input type="text" class="form-control" id="sector" placeholder="Fecha" name="sector" [(ngModel)]="sector" readonly style="text-align:center;">
       </div>
       <div>
-          <button type="button" class="btn btn-danger" (click)="masSector()"><i class="fas fa-arrow-alt-circle-right"></i></button>
-      </div>      
+        <button type="button" class="btn btn-danger" (click)="masSector()">
+          <i class="fas fa-arrow-alt-circle-right"></i>
+        </button>
+      </div>
     </div>
     <div class="form-group text-center">
       <label for="fecha">FECHA</label>
-      <input type="date" class="form-control" id="fecha" placeholder="Fecha" name="fecha" [(ngModel)]="fecha" style="text-align:center;" (change)="actualizaFecha()">
-    </div>    
+      <input type="date" class="form-control" id="fecha" placeholder="Fecha" name="fecha" [(ngModel)]="fecha" style="text-align:center;"
+        (change)="actualizaFecha()">
+    </div>
   </div>
 </div>
 <div class="row">
   <div class="col-sm">
     <div class="text-center">
-      <h5>MENSUAL</h5>      
+      <h5>MENSUAL</h5>
     </div>
   </div>
-  <table class="table" *ngIf="existeRotaMes(sector)">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">ROTAS</th>
-        <th scope="col">MES</th>
-        <th scope="col">{{ fecha | date: 'MM' }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Hamacas</td>
-        <td>{{ sectorMes?.total_h_rotas }}</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Sombrillas</td>
-        <td>{{  sectorMes?.total_s_rotas }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="col-sm">
+    <table class="table" *ngIf="existeRotaMes(sector)">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ROTAS</th>
+          <th scope="col">MES</th>
+          <th scope="col">{{ fecha | date: 'MM' }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Hamacas</td>
+          <td>{{ sectorMes?.total_h_rotas }}</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Sombrillas</td>
+          <td>{{ sectorMes?.total_s_rotas }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="col-sm">
     <div class="text-center">
-      <h5>ANUAL</h5>      
+      <h5>ANUAL</h5>
     </div>
   </div>
-  <table class="table" *ngIf="existeRotaAno(sector)">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">ROTAS</th>
-        <th scope="col">AÑO</th>
-        <th scope="col">{{ fecha | date: 'yyyy' }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Hamacas</td>
-        <td>{{ sectorAno?.total_h_rotas }}</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Sombrillas</td>
-        <td>{{  sectorAno?.total_s_rotas }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="col-sm">
+    <table class="table" *ngIf="existeRotaAno(sector)">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ROTAS</th>
+          <th scope="col">AÑO</th>
+          <th scope="col">{{ fecha | date: 'yyyy' }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Hamacas</td>
+          <td>{{ sectorAno?.total_h_rotas }}</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Sombrillas</td>
+          <td>{{ sectorAno?.total_s_rotas }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
