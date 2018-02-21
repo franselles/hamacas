@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { BdService } from './../shared/bd.services';
-import { Hamaca, Acumulados } from './models';
+import { Hamaca, Acumulados, Localizaciones } from './models';
 
 @Injectable()
 export class HamacasService {
@@ -13,10 +13,14 @@ export class HamacasService {
   public acumuladosMes: Acumulados[] = [];
   public acumuladosAno: Acumulados[] = [];
 
+  public localizaciones: Localizaciones[] = [];
+
   BASE_URL: string;
+  BASE_URL_LOC: string;
 
   constructor(private http: HttpClient, private bdService: BdService) {
     this.BASE_URL = this.bdService.dir_bd_ + 'hamacas/';
+    this.BASE_URL_LOC = this.bdService.dir_bd_ + 'localizacion';
   }
 
   getHamacasUltimos() {
@@ -37,6 +41,10 @@ export class HamacasService {
 
   getAcumuladosAno(year: string) {
     return this.http.get(this.BASE_URL + 'rotas/total/ano/' + year);
+  }
+
+  getLocalizaciones() {
+    return this.http.get(this.BASE_URL_LOC);
   }
 
   addHamaca(hamaca: Hamaca) {
@@ -78,6 +86,15 @@ export class HamacasService {
     this.getAcumuladosAno(ano).subscribe(
       (data: Acumulados[]) => {
         this.acumuladosAno = data;
+      },
+      err => console.log(err)
+    );
+  }
+
+  cargaLocalizaciones() {
+    this.getLocalizaciones().subscribe(
+      (data: Localizaciones[]) => {
+        this.localizaciones = data;
       },
       err => console.log(err)
     );

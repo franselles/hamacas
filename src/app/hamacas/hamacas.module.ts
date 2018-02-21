@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BdService } from '../shared/bd.services';
 import { RouterModule } from '@angular/router';
 import { HaRotasComponent } from './ha-rotas/ha-rotas.component';
+import { HaLocalizaComponent } from './ha-localiza/ha-localiza.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { HaRotasComponent } from './ha-rotas/ha-rotas.component';
     HaEntradaComponent,
     HaDetalleComponent,
     HaListaComponent,
-    HaRotasComponent
+    HaRotasComponent,
+    HaLocalizaComponent
   ],
   providers: [
     Global,

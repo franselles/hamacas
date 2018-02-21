@@ -22,3 +22,12 @@ export interface Acumulados {
     total_s_retiradas: number;
     total_s_repuestas: number;
 }
+
+export interface Localizaciones {
+    _id?: string;
+    sector: number;
+    localizacion: string;
+    url: string;
+    geo_1: string;
+    geo_2: string;
+}

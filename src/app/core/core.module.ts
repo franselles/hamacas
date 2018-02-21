@@ -10,6 +10,7 @@ import { InfoComponent } from './info/info.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { HaRotasComponent } from '../hamacas/ha-rotas/ha-rotas.component';
 import { CloseMenuDirective } from './close-menu.directive';
+import { HaLocalizaComponent } from '../hamacas/ha-localiza/ha-localiza.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'detalle/:id', component: HaDetalleComponent },
   { path: 'lista', component: HaListaComponent },
   { path: 'rotas', component: HaRotasComponent },
+  { path: 'localiza', component: HaLocalizaComponent },
   { path: 'info', component: InfoComponent }
 ];
 

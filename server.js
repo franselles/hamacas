@@ -4,6 +4,7 @@ var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
 var HAMACAS_COLLECTION = "hamacas";
+var LOCALIZACION_COLLECTION = "localizaciones";
 
 var app = express();
 app.use(bodyParser.json());
@@ -281,3 +282,77 @@ app.get("/api/hamacas/rotas/total/ano/:year", function(req, res) {
     });
 });
 
+
+// LOCALIZACION API ROUTES BELOW
+
+/*  "/api/localizacion"
+ *    GET: finds all localizacion
+ *    POST: creates a new localizacion
+ */
+
+app.get("/api/localizacion", function(req, res) {
+  db.collection(LOCALIZACION_COLLECTION).find({}).sort({ "sector": 1}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get localizacion.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+
+app.post("/api/localizacion", function(req, res) {
+  var newLocalizacion = req.body;
+  newLocalizacion.createfecha = new Date();
+
+/*   if (!req.body.nombre) {
+    handleError(res, "Invalid nombre input", "Must provide a nombre.", 400);
+  } */
+
+  db.collection(LOCALIZACION_COLLECTION).insertOne(newLocalizacion, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, "Failed to create localizacion.");
+    } else {
+      res.status(201).json(doc.ops[0]);
+    }
+  });
+});
+
+/*  "/api/localizacion/:id"
+ *    GET: find localizacion by id
+ *    PUT: upfecha localizacion by id
+ *    DELETE: deletes localizacion by id
+ */
+
+app.get("/api/localizacion/:id", function(req, res) {
+  db.collection(LOCALIZACION_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, "Failed to get localizacion");
+    } else {
+      res.status(200).json(doc);
+    }
+  });
+});
+
+app.put("/api/localizacion/:id", function(req, res) {
+  var upfechaDoc = req.body;
+  delete upfechaDoc._id;
+
+  db.collection(LOCALIZACION_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, upfechaDoc, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, "Failed to upfecha localizacion");
+    } else {
+      upfechaDoc._id = req.params.id;
+      res.status(200).json(upfechaDoc);
+    }
+  });
+});
+
+app.delete("/api/localizacion/:id", function(req, res) {
+  db.collection(LOCALIZACION_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+    if (err) {
+      handleError(res, err.message, "Failed to delete localizacion");
+    } else {
+      res.status(200).json(req.params.id);
+    }
+  });
+});
