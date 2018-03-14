@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { BdService } from './../shared/bd.services';
-import { Hamaca, Acumulados, Localizaciones } from './models';
+import { Hamaca, Acumulados, Localizaciones, Maxhamaca } from './models';
 
 @Injectable()
 export class HamacasService {
@@ -15,12 +15,19 @@ export class HamacasService {
 
   public localizaciones: Localizaciones[] = [];
 
+  public maximo: any[] = [];
+
   BASE_URL: string;
   BASE_URL_LOC: string;
 
   constructor(private http: HttpClient, private bdService: BdService) {
     this.BASE_URL = this.bdService.dir_bd_ + 'hamacas/';
     this.BASE_URL_LOC = this.bdService.dir_bd_ + 'localizacion';
+  }
+
+
+  getMaximo(mes: string) {
+    return this.http.get(this.BASE_URL + 'maximo/' + mes);
   }
 
   getHamacasUltimos() {
@@ -86,6 +93,15 @@ export class HamacasService {
     this.getAcumuladosAno(ano).subscribe(
       (data: Acumulados[]) => {
         this.acumuladosAno = data;
+      },
+      err => console.log(err)
+    );
+  }
+
+  cargaMaximos(mes: string) {
+    this.getMaximo(mes).subscribe(
+      (data: any[]) => {
+        this.maximo = data;
       },
       err => console.log(err)
     );

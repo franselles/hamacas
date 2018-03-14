@@ -22,6 +22,11 @@ export class HaDetalleComponent implements OnInit {
   public desHamacas = true;
   public desSombrillas = true;
   public verBorrar = false;
+
+  public sectorMax: any;
+
+  public defHamacas: number;
+  public defSombrillas: number;
   // private numHamacas: number;
   // private numSombrillas: number;
 
@@ -80,6 +85,13 @@ export class HaDetalleComponent implements OnInit {
           hamacas: this.sectorUlt.lastHamacas,
           sombrillas: this.sectorUlt.lastSombrillas
         });
+      }
+
+      this.sectorMax = this.hamacasService.maximo.find(x => x._id === this.global.sector);
+
+      if (this.sectorMax) {
+        this.defHamacas = this.sectorMax.maxHamacas - this.hamacasForm.value.hamacas;
+        this.defSombrillas = this.sectorMax.maxSombrillas - this.hamacasForm.value.sombrillas;
       }
     }
   }

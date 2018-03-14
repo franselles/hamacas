@@ -5,6 +5,7 @@ var ObjectID = mongodb.ObjectID;
 
 var HAMACAS_COLLECTION = "hamacas";
 var LOCALIZACION_COLLECTION = "localizaciones";
+var MAXHAMACAS_COLLECTION = "maxhamacas";
 
 var app = express();
 app.use(bodyParser.json());
@@ -168,6 +169,37 @@ app.get("/api/hamacas/lista/ultimos/fecha/:fecha", function(req, res) {
     ], function(err, docs) {
         if (err) {
           handleError(res, err.message, "Failed to get aggregate del dia.");
+        } else {
+          res.status(200).json(docs);
+        }
+    });
+});
+
+app.get("/api/hamacas/maximo/:mes", function(req, res) {
+  db.collection(MAXHAMACAS_COLLECTION).aggregate(
+    [
+      {
+        $match: {
+          mes_i : {$lte: req.params.mes},
+          mes_f : {$gte: req.params.mes},
+        }
+      },
+      {
+        $sort: {"sector": 1}
+      },
+      {
+        $group: {
+          _id: "$sector",
+          maxHamacas: { $last: "$max_hamacas" }, 
+          maxSombrillas: { $last: "$max_sombrillas" },        
+          maxId: { $last: "$_id"}           
+      }},
+      {
+        $sort: {"_id": 1}
+      }    
+    ], function(err, docs) {
+        if (err) {
+          handleError(res, err.message, "Failed to get aggregate maximos.");
         } else {
           res.status(200).json(docs);
         }

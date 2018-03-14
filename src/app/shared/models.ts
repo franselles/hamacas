@@ -31,3 +31,15 @@ export interface Localizaciones {
     geo_1: string;
     geo_2: string;
 }
+
+export interface Maxhamaca {
+    _id?: string;
+    fecha_i: string;
+    fecha_f: string;
+    mes_i: string;
+    mes_f: string;
+    sector: number;
+    max_hamacas: number;
+    max_sombrillas: number;
+    m2: number;
+}

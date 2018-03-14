@@ -19,6 +19,17 @@
     <button type="button" class="btn btn-primary btn-lg btn-block" (click)="nuevo()" [disabled]="existeUltFecha(sector)"><i class="fas fa-plus-square"></i> Nuevo Registro</button>
   </div>
 </div>
+<div class="row mt-4" *ngIf="checkMax(sector)">
+  <div class="col-sm">
+    <div [className]="classCard">
+      <div class="card-body">
+        <h5 class="card-title">Margen de unidades</h5>
+        <p class="card-text">MAX Hamacas: <strong>{{ sectorMax?.maxHamacas}}.</strong> Margen <strong>{{ defHamacas }}</strong></p>
+        <p class="card-text">MAX Sombrillas: <strong>{{ sectorMax?.maxSombrillas}}.</strong> Margen <strong>{{ defSombrillas }}</strong></p>        
+      </div>
+    </div>    
+  </div>
+</div>
 <div class="row mt-4" *ngIf="existeUltFecha(sector)">
     <div class="col-sm">
       <div class="card">

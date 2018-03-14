@@ -15,6 +15,12 @@ export class HaEntradaComponent implements OnInit {
   public sector: number;
   public sectorDia: any;
   public sectorUlt: any;
+  public sectorMax: any;
+
+  public defHamacas: number;
+  public defSombrillas: number;
+
+  public classCard = 'bg-success';
 
   constructor(private global: Global, private hamacasService: HamacasService, private router: Router, private swUpdate: SwUpdate) { }
 
@@ -37,6 +43,10 @@ export class HaEntradaComponent implements OnInit {
     this.sector = this.global.sector;
 
     this.hamacasService.cargaUltimos(this.fecha);
+
+    const mes = this.fecha.split('-');
+
+    this.hamacasService.cargaMaximos(mes[1]);
 
   }
 
@@ -67,6 +77,27 @@ export class HaEntradaComponent implements OnInit {
 
     if (this.sectorDia) {
       return this.sectorDia;
+    }
+  }
+
+  checkMax(sector: number) {
+    this.sectorMax = this.hamacasService.maximo.find(x => x._id === sector);
+
+    this.existeUlt(sector);
+
+    if (this.sectorUlt && this.sectorMax) {
+      this.defHamacas = this.sectorMax.maxHamacas - this.sectorUlt.lastHamacas;
+      this.defSombrillas = this.sectorMax.maxSombrillas - this.sectorUlt.lastSombrillas;
+    }
+
+    if (this.defHamacas < 0 || this.defSombrillas < 0) {
+      this.classCard = 'card text-white mb-3 bg-danger';
+    } else {
+      this.classCard = 'card text-black mb-3 bg-success';
+    }
+
+    if (this.sectorMax) {
+      return this.sectorMax;
     }
   }
 
