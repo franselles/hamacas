@@ -1,6 +1,6 @@
 {
   "name": "hamacas",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "license": "MIT",
   "main": "server.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "^1.7.3",    
+    "@angular/cli": "^1.7.4",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
@@ -35,7 +35,7 @@
     "typescript": "~2.5.3"
   },
   "devDependencies": {
-    "@angular/cli": "^1.7.3",
+    "@angular/cli": "^1.7.4",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
@@ -55,7 +55,7 @@
     "typescript": "~2.5.3"
   },
   "engines": {
-    "node": "8.10.0",
-    "npm": "5.7.1"
+    "node": "8.11.1",
+    "npm": "6.0.0"
   }
 }
