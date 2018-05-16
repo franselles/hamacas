@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'lista', component: HaListaComponent },
   { path: 'rotas', component: HaRotasComponent },
   { path: 'localiza', component: HaLocalizaComponent },
-  { path: 'info', component: InfoComponent }
+  { path: 'info', component: InfoComponent },
+  { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 
 
