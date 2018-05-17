@@ -1,9 +1,10 @@
 {
-  "name": "teacefulturn35175",
-  "short_name": "teacefulturn35175",
+  "name": "hamacas",
+  "short_name": "hamacas",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
+  "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
   "icons": [
