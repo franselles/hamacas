@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Global } from '../../shared/global.services';
 import { HamacasService } from '../../shared/hamacas.service';
 import { Router } from '@angular/router';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-ha-entrada',
@@ -21,9 +22,17 @@ export class HaEntradaComponent implements OnInit {
 
   public classCard = 'bg-success';
 
-  constructor(private global: Global, private hamacasService: HamacasService, private router: Router) { }
+  constructor(private global: Global, private hamacasService: HamacasService, private router: Router, private swUpdate: SwUpdate) { }
 
   ngOnInit() {
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+          if (confirm('Hay una nueva version. Actualizar?')) {
+              window.location.reload();
+          }
+      });
+    }
+
     window.location.hash = 'no-back-button';
     window.location.hash = 'Again-No-back-button'; // chrome
     window.onhashchange = function() {
