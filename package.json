@@ -1,6 +1,6 @@
 {
   "name": "hamacas",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "license": "MIT",
   "main": "server.js",
   "scripts": {
