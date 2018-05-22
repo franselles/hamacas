@@ -256,7 +256,7 @@ app.get("/api/hamacas/rotas/total/mes/:month/:year", function(req, res) {
     [
       {
         $match : { 
-          month : {$lte: req.params.month},
+          month : req.params.month,
           year: req.params.year
          }
       },
