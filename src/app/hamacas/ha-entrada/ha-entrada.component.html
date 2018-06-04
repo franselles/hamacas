@@ -37,7 +37,8 @@
           <h5 class="card-title">Control del día {{ fecha | date: 'dd/MM/yyyy' }}</h5>
           <p class="card-text">Hamacas: {{ sectorDia.lastHamacas}}</p>
           <p class="card-text">Sombrillas: {{ sectorDia.lastSombrillas}}</p>        
-          <p class="card-text">Notas: {{ sectorDia.lastObservacion}}</p>                 
+          <p class="card-text">HRO: {{ sectorDia.lastHrotas}} HRE: {{ sectorDia.lastHrepuestas}} SRO: {{ sectorDia.lastSrotas}} SRE: {{ sectorDia.lastSrepuestas}}</p>               
+          <p class="card-text">Notas: {{ sectorDia.lastObservacion}}</p>                  
           <a [routerLink]="['/detalle', sectorDia.lastId]" class="btn btn-primary">Editar</a>
         </div>
       </div>    
@@ -50,6 +51,7 @@
         <h5 class="card-title">Inventario del día {{ sectorUlt.lastFecha | date: 'dd/MM/yyyy' }}</h5>
         <p class="card-text">Hamacas: {{ sectorUlt.lastHamacas}}</p>
         <p class="card-text">Sombrillas: {{ sectorUlt.lastSombrillas}}</p> 
+        <p class="card-text">HRO: {{ sectorUlt.lastHrotas}} HRE: {{ sectorUlt.lastHrepuestas}} SRO: {{ sectorUlt.lastSrotas}} SRE: {{ sectorUlt.lastSrepuestas}}</p>                       
         <p class="card-text">Notas: {{ sectorUlt.lastObservacion}}</p> 
         <a [routerLink]="['/detalle', sectorUlt.lastId]" class="card-link">o</a>           
       </div>

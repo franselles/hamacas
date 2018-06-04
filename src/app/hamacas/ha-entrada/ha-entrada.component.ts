@@ -33,11 +33,11 @@ export class HaEntradaComponent implements OnInit {
       });
     }
 
-    window.location.hash = 'no-back-button';
+/*     window.location.hash = 'no-back-button';
     window.location.hash = 'Again-No-back-button'; // chrome
     window.onhashchange = function() {
       window.location.hash = 'no-back-button';
-    };
+    }; */
 
     this.fecha = this.global.fecha;
     this.sector = this.global.sector;

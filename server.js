@@ -29,7 +29,7 @@ var db;
 
 // 'mongodb://f54n:Uzituxez1800@ds145295.mlab.com:45295/userserious'
 // process.env.MONGODB_URI
-// 'mongodb://localhost/eplayas'
+// 'mongodb://localhost/userserious'
 
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect('mongodb://f54n:Uzituxez1800@ds145295.mlab.com:45295/userserious', function (err, database) {
@@ -128,7 +128,11 @@ app.get("/api/hamacas/lista/ultimos", function(req, res) {
           lastFecha: { $last: "$fecha" },
           lastHamacas: { $last: "$hamacas" }, 
           lastSombrillas: { $last: "$sombrillas" },
-          lastObservacion: { $last: "$observacion"},          
+          lastObservacion: { $last: "$observacion"},   
+          lastHrotas: { $last: "$h_rotas" },
+          lastHrepuestas: { $last : "$h_repuestas" },
+          lastSrotas: { $last: "$s_rotas" },
+          lastSrepuestas: { $last : "$s_repuestas" },                 
           lastId: { $last: "$_id"}           
       }},
       {
@@ -160,7 +164,11 @@ app.get("/api/hamacas/lista/ultimos/fecha/:fecha", function(req, res) {
           lastFecha: { $last: "$fecha" },
           lastHamacas: { $last: "$hamacas" }, 
           lastSombrillas: { $last: "$sombrillas" },
-          lastObservacion: { $last: "$observacion"},
+          lastObservacion: { $last: "$observacion" },
+          lastHrotas: { $last: "$h_rotas" },
+          lastHrepuestas: { $last : "$h_repuestas" },
+          lastSrotas: { $last: "$s_rotas" },
+          lastSrepuestas: { $last : "$s_repuestas" },          
           lastId: { $last: "$_id"}           
       }},
       {

@@ -34,11 +34,11 @@ export class HaDetalleComponent implements OnInit {
     private hamacasService: HamacasService, private global: Global, private location: Location) { }
 
   ngOnInit() {
-    window.location.hash = 'no-back-button';
+/*     window.location.hash = 'no-back-button';
     window.location.hash = 'Again-No-back-button'; // chrome
     window.onhashchange = function() {
       window.location.hash = 'no-back-button';
-    };
+    }; */
 
     this.hamacasForm = this.fb.group({
       sector: ['', Validators.required],
