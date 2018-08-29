@@ -216,9 +216,9 @@
 </div>     
   <div class="row">
     <div class="col text-center">
-      <button type="submit" [disabled]="!hamacasForm.valid" class="btn btn-success">ACEPTAR</button>
+      <button type="submit" [disabled]="saved" class="btn btn-success">ACEPTAR</button>
       <button type="button" (click)="onCancelar()" class="btn btn-warning">CANCELAR</button>
-      <button type="button" (click)="onBorrar(hamacasForm)" class="btn btn-danger" *ngIf="verBorrar">BORRAR</button>
+      <button type="button" [disabled]="saved" (click)="onBorrar(hamacasForm)" class="btn btn-danger" *ngIf="verBorrar">BORRAR</button>
     </div>
   </div>
 </form>

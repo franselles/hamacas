@@ -27,6 +27,8 @@ export class HaDetalleComponent implements OnInit {
 
   public defHamacas: number;
   public defSombrillas: number;
+
+  public saved: boolean;
   // private numHamacas: number;
   // private numSombrillas: number;
 
@@ -40,9 +42,11 @@ export class HaDetalleComponent implements OnInit {
       window.location.hash = 'no-back-button';
     }; */
 
+    this.saved = false;
+
     this.hamacasForm = this.fb.group({
-      sector: ['', Validators.required],
-      fecha: ['', Validators.required],
+      sector: [''],
+      fecha: [''],
       hamacas: ['0'],
       sombrillas: ['0'],
       h_rotas: ['0'],
@@ -117,6 +121,7 @@ export class HaDetalleComponent implements OnInit {
    */
 
   onSubmit(data: any) {
+    this.saved = true;
     if (this.enEdicion === true) {
       this.hamacasService.updateHamaca(this.id, data.value)
         .subscribe(() => {
@@ -150,6 +155,9 @@ export class HaDetalleComponent implements OnInit {
 
 
   onBorrar(datos: any) {
+
+    this.saved = true;
+
     if (this.enEdicion) {
       this.hamacasService.removeHamaca(this.id).subscribe(() => {
         console.log('Borrado');
