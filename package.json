@@ -1,6 +1,6 @@
 {
   "name": "hamacas",
-  "version": "1.0.45",
+  "version": "1.0.46",
   "license": "MIT",
   "main": "server.js",
   "scripts": {
@@ -31,12 +31,12 @@
     "express": "^4.16.2",
     "mongodb": "^2.2.34",
     "rxjs": "^6.5.1",
-    "typescript": "~3.2.4",
+    "typescript": "^3.4.5",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.13.8",
-    "@angular/cli": "^7.3.8",
+    "@angular-devkit/build-angular": "^0.800.1",
+    "@angular/cli": "^8.0.1",
     "@angular/language-service": "^7.2.14",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
