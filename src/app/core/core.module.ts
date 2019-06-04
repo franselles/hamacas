@@ -24,13 +24,17 @@ const routes: Routes = [
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 
-
 @NgModule({
   imports: [
     CommonModule,
     HamacasModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { useHash: true })
   ],
-  declarations: [CoreComponent, InfoComponent, InicioComponent, CloseMenuDirective]
+  declarations: [
+    CoreComponent,
+    InfoComponent,
+    InicioComponent,
+    CloseMenuDirective
+  ]
 })
-export class CoreModule { }
+export class CoreModule {}
