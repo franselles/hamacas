@@ -6,15 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info.component.css']
 })
 export class InfoComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    /*
     window.location.hash = 'no-back-button';
     window.location.hash = 'Again-No-back-button'; // chrome
     window.onhashchange = function() {
       window.location.hash = 'no-back-button';
-    };
-  }
 
+    }
+    */
+  }
 }
