@@ -12,7 +12,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./ha-detalle.component.css']
 })
 export class HaDetalleComponent implements OnInit {
-
   public hamacasForm: FormGroup;
   public hamaca: Hamaca;
   public enEdicion: boolean;
@@ -22,6 +21,8 @@ export class HaDetalleComponent implements OnInit {
   public desHamacas = true;
   public desSombrillas = true;
   public verBorrar = false;
+  public verRetiradas = false;
+  public verObservacion = false;
 
   public sectorMax: any;
 
@@ -32,11 +33,17 @@ export class HaDetalleComponent implements OnInit {
   // private numHamacas: number;
   // private numSombrillas: number;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private fb: FormBuilder,
-    private hamacasService: HamacasService, private global: Global, private location: Location) { }
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    private hamacasService: HamacasService,
+    private global: Global,
+    private location: Location
+  ) {}
 
   ngOnInit() {
-/*     window.location.hash = 'no-back-button';
+    /*     window.location.hash = 'no-back-button';
     window.location.hash = 'Again-No-back-button'; // chrome
     window.onhashchange = function() {
       window.location.hash = 'no-back-button';
@@ -61,16 +68,17 @@ export class HaDetalleComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.params['id'];
 
     if (this.id) {
-      this.hamacasService.getHamaca(this.id)
-        .subscribe((data: Hamaca) => {
-            this.hamaca = data;
-            this.enEdicion = true;
-            this.cargaFormulario(data);
-            this.sSector = this.global.sector;
-            // this.numHamacas = this.hamaca.hamacas;
-            // this.numSombrillas = this.hamaca.sombrillas;
-          },
-          err => console.log(err));
+      this.hamacasService.getHamaca(this.id).subscribe(
+        (data: Hamaca) => {
+          this.hamaca = data;
+          this.enEdicion = true;
+          this.cargaFormulario(data);
+          this.sSector = this.global.sector;
+          // this.numHamacas = this.hamaca.hamacas;
+          // this.numSombrillas = this.hamaca.sombrillas;
+        },
+        err => console.log(err)
+      );
     } else {
       this.enEdicion = false;
       this.sSector = this.global.sector;
@@ -79,7 +87,9 @@ export class HaDetalleComponent implements OnInit {
         fecha: this.global.fecha
       });
 
-      this.sectorUlt = this.hamacasService.hamacasUltimo.find(x => x._id === this.global.sector);
+      this.sectorUlt = this.hamacasService.hamacasUltimo.find(
+        x => x._id === this.global.sector
+      );
 
       if (this.sectorUlt) {
         console.log('last');
@@ -91,11 +101,15 @@ export class HaDetalleComponent implements OnInit {
         });
       }
 
-      this.sectorMax = this.hamacasService.maximo.find(x => x._id === this.global.sector);
+      this.sectorMax = this.hamacasService.maximo.find(
+        x => x._id === this.global.sector
+      );
 
       if (this.sectorMax) {
-        this.defHamacas = this.sectorMax.maxHamacas - this.hamacasForm.value.hamacas;
-        this.defSombrillas = this.sectorMax.maxSombrillas - this.hamacasForm.value.sombrillas;
+        this.defHamacas =
+          this.sectorMax.maxHamacas - this.hamacasForm.value.hamacas;
+        this.defSombrillas =
+          this.sectorMax.maxSombrillas - this.hamacasForm.value.sombrillas;
       }
     }
   }
@@ -123,22 +137,25 @@ export class HaDetalleComponent implements OnInit {
   onSubmit(data: any) {
     this.saved = true;
     if (this.enEdicion === true) {
-      this.hamacasService.updateHamaca(this.id, data.value)
-        .subscribe(() => {
+      this.hamacasService.updateHamaca(this.id, data.value).subscribe(
+        () => {
           console.log('Actializado');
           this.router.navigate(['/entrada']);
           // this.location.back();
-        }, err => console.log('Error updating : ' + err));
+        },
+        err => console.log('Error updating : ' + err)
+      );
     } else {
-      this.hamacasService.addHamaca(data.value)
-        .subscribe(() => {
+      this.hamacasService.addHamaca(data.value).subscribe(
+        () => {
           console.log('Creado');
           this.router.navigate(['/entrada']);
           // this.location.back();
-        }, err => console.log('Error creating : ' + err));
+        },
+        err => console.log('Error creating : ' + err)
+      );
     }
   }
-
 
   /*
    GESTION Cancelar
@@ -153,19 +170,20 @@ export class HaDetalleComponent implements OnInit {
    GESTION Borrar
    */
 
-
   onBorrar(datos: any) {
-
     this.saved = true;
 
     if (this.enEdicion) {
-      this.hamacasService.removeHamaca(this.id).subscribe(() => {
-        console.log('Borrado');
-        // this.router.navigate(['/']);
-        this.hamacasService.cargaUltimos(this.global.fecha);
-        this.router.navigate(['/entrada']);
-        // this.location.back();
-      }, error => console.error('Error removing : ' + error));
+      this.hamacasService.removeHamaca(this.id).subscribe(
+        () => {
+          console.log('Borrado');
+          // this.router.navigate(['/']);
+          this.hamacasService.cargaUltimos(this.global.fecha);
+          this.router.navigate(['/entrada']);
+          // this.location.back();
+        },
+        error => console.error('Error removing : ' + error)
+      );
     }
   }
 
@@ -289,7 +307,7 @@ export class HaDetalleComponent implements OnInit {
     }
   }
 
-/*   cambiaHamacas(value: any) {
+  /*   cambiaHamacas(value: any) {
     console.log(this.numHamacas);
     if (Number.isNaN(value.h_retiradas) === false) {
     const t = Number(value.h_retiradas);
