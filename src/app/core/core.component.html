@@ -1,19 +1,66 @@
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" [routerLink]="['/entrada']">RA HAMACAS</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup" #menu>
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" [routerLink]="['/entrada']" appCloseMenu [menu]="menu">Inicio</a>
-            <a class="nav-item nav-link" [routerLink]="['/lista']" appCloseMenu [menu]="menu">Lista</a>
-            <a class="nav-item nav-link" [routerLink]="['/rotas']" appCloseMenu [menu]="menu">Rotas</a> 
-            <a class="nav-item nav-link" [routerLink]="['/localiza']" appCloseMenu [menu]="menu">Sectores</a>                         
-            <a class="nav-item nav-link" [routerLink]="['/info']" appCloseMenu [menu]="menu">Info</a>  
-          </div>
-        </div>
-      </nav>  
+  <nav
+    class="navbar navbar-expand-lg navbar-light"
+    style="background-color: #e3f2fd;"
+  >
+    <a class="navbar-brand" [routerLink]="['/entrada']">RA HAMACAS</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" #menu>
+      <div class="navbar-nav">
+        <a
+          class="nav-item nav-link"
+          [routerLink]="['/entrada']"
+          appCloseMenu
+          [menu]="menu"
+          >Inicio</a
+        >
+        <a
+          class="nav-item nav-link"
+          [routerLink]="['/lista']"
+          appCloseMenu
+          [menu]="menu"
+          >Lista</a
+        >
+        <a
+          class="nav-item nav-link"
+          [routerLink]="['/rotas']"
+          appCloseMenu
+          [menu]="menu"
+          >Rotas</a
+        >
+        <a
+          class="nav-item nav-link"
+          [routerLink]="['/localiza']"
+          appCloseMenu
+          [menu]="menu"
+          >Sectores</a
+        >
+        <a
+          class="nav-item nav-link"
+          [routerLink]="['/info']"
+          appCloseMenu
+          [menu]="menu"
+          >Info</a
+        >
+        <a
+          class="nav-item nav-link"
+          appCloseMenu
+          [menu]="menu"
+          (click)="verOculto()"
+          >Oculto</a
+        >
+      </div>
+    </div>
+  </nav>
   <router-outlet></router-outlet>
 </div>
-

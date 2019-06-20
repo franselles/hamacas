@@ -21,8 +21,6 @@ export class HaDetalleComponent implements OnInit {
   public desHamacas = true;
   public desSombrillas = true;
   public verBorrar = false;
-  public verRetiradas = false;
-  public verObservacion = false;
 
   public sectorMax: any;
 
@@ -38,7 +36,7 @@ export class HaDetalleComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private hamacasService: HamacasService,
-    private global: Global,
+    public global: Global,
     private location: Location
   ) {}
 

@@ -16,15 +16,13 @@ export class HaEntradaComponent implements OnInit {
   public sectorUlt: any;
   public sectorMax: any;
 
-  public verSector = false;
-
   public defHamacas: number;
   public defSombrillas: number;
 
   public classCard = 'bg-success';
 
   constructor(
-    private global: Global,
+    public global: Global,
     private hamacasService: HamacasService,
     private router: Router,
     private swUpdate: SwUpdate
