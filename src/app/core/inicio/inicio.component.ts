@@ -8,10 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-
   public mensaje: string;
 
-  constructor(private router: Router, private hamacasService: HamacasService) { }
+  constructor(private router: Router, private hamacasService: HamacasService) {}
 
   ngOnInit() {
     this.conexion();
@@ -29,5 +28,4 @@ export class InicioComponent implements OnInit {
       }
     );
   }
-
 }
