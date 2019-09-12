@@ -1,6 +1,6 @@
 {
   "name": "hamacas",
-  "version": "1.0.54",
+  "version": "1.0.55",
   "license": "MIT",
   "main": "server.js",
   "scripts": {
@@ -28,7 +28,7 @@
     "body-parser": "^1.18.2",
     "core-js": "^2.5.4",
     "express": "^4.16.2",
-    "mongodb": "^2.2.34",
+    "mongodb": "^3.3.2",
     "rxjs": "^6.5.3",
     "typescript": "^3.5.3",
     "zone.js": "^0.10.2"
