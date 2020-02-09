@@ -1,29 +1,29 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongodb = require('mongodb');
+var express = require("express");
+var bodyParser = require("body-parser");
+var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
-var HAMACAS_COLLECTION = 'hamacas';
-var LOCALIZACION_COLLECTION = 'localizaciones';
-var MAXHAMACAS_COLLECTION = 'maxhamacas';
+var HAMACAS_COLLECTION = "hamacas";
+var LOCALIZACION_COLLECTION = "localizaciones";
+var MAXHAMACAS_COLLECTION = "maxhamacas";
 
 var app = express();
 app.use(bodyParser.json());
 
 // Create link to Angular build directory
-var distDir = __dirname + '/dist/';
+var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
 // CORS on ExpressJS
 // Allow CORS with localhost in Chrome
 
-app.all('/api/*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
+app.all("/api/*", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
-    'Access-Control-Allow-Headers',
-    'Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With'
+    "Access-Control-Allow-Headers",
+    "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With"
   );
-  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
   return next();
 });
 
@@ -36,7 +36,7 @@ var db;
 
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect(
-  'mongodb://f54n:Uzituxez1800@ds145295.mlab.com:45295/userserious',
+  "mongodb://f54n:Uzituxez1800@ds145295.mlab.com:45295/userserious",
   { useNewUrlParser: true, useUnifiedTopology: true },
   function(err, database) {
     if (err) {
@@ -45,25 +45,25 @@ mongodb.MongoClient.connect(
     }
 
     // Save database object from the callback for reuse.
-    db = database.db('userserious');
-    console.log('Database connection ready');
+    db = database.db("userserious");
+    console.log("Database connection ready");
 
     // Initialize the app.
     var server = app.listen(process.env.PORT || 8080, function() {
       var port = server.address().port;
-      console.log('App now running on port', port);
+      console.log("App now running on port", port);
     });
   }
 );
 
 // Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
-  console.log('ERROR: ' + reason);
+  console.log("ERROR: " + reason);
   res.status(code || 500).json({ error: message });
 }
 
-app.get('/', function(request, response) {
-  response.send('Hamacas!!!');
+app.get("/", function(request, response) {
+  response.send("Hamacas!!!");
 });
 
 // HAMACAS API ROUTES BELOW
@@ -73,20 +73,20 @@ app.get('/', function(request, response) {
  *    POST: creates a new hamacas
  */
 
-app.get('/api/hamacas', function(req, res) {
+app.get("/api/hamacas", function(req, res) {
   db.collection(HAMACAS_COLLECTION)
     .find({})
     .sort({ fecha: 1, sector: 1 })
     .toArray(function(err, docs) {
       if (err) {
-        handleError(res, err.message, 'Failed to get hamacas.');
+        handleError(res, err.message, "Failed to get hamacas.");
       } else {
         res.status(200).json(docs);
       }
     });
 });
 
-app.post('/api/hamacas', function(req, res) {
+app.post("/api/hamacas", function(req, res) {
   var newHamaca = req.body;
   newHamaca.createfecha = new Date();
 
@@ -94,14 +94,14 @@ app.post('/api/hamacas', function(req, res) {
     handleError(res, "Invalid nombre input", "Must provide a nombre.", 400);
   } */
 
-  var splitFecha = req.body.fecha.split('-');
+  var splitFecha = req.body.fecha.split("-");
 
   newHamaca.year = splitFecha[0];
   newHamaca.month = splitFecha[1];
 
   db.collection(HAMACAS_COLLECTION).insertOne(newHamaca, function(err, doc) {
     if (err) {
-      handleError(res, err.message, 'Failed to create new hamacas.');
+      handleError(res, err.message, "Failed to create new hamacas.");
     } else {
       res.status(201).json(doc.ops[0]);
     }
@@ -114,12 +114,12 @@ app.post('/api/hamacas', function(req, res) {
  *    DELETE: deletes hamacas by id
  */
 
-app.get('/api/hamacas/edita/:id', function(req, res) {
+app.get("/api/hamacas/edita/:id", function(req, res) {
   db.collection(HAMACAS_COLLECTION).findOne(
     { _id: new ObjectID(req.params.id) },
     function(err, doc) {
       if (err) {
-        handleError(res, err.message, 'Failed to get hamacas');
+        handleError(res, err.message, "Failed to get hamacas");
       } else {
         res.status(200).json(doc);
       }
@@ -127,7 +127,7 @@ app.get('/api/hamacas/edita/:id', function(req, res) {
   );
 });
 
-app.get('/api/hamacas/lista/ultimos', function(req, res) {
+app.get("/api/hamacas/lista/ultimos", function(req, res) {
   db.collection(HAMACAS_COLLECTION).aggregate(
     [
       {
@@ -135,16 +135,16 @@ app.get('/api/hamacas/lista/ultimos', function(req, res) {
       },
       {
         $group: {
-          _id: '$sector',
-          lastFecha: { $last: '$fecha' },
-          lastHamacas: { $last: '$hamacas' },
-          lastSombrillas: { $last: '$sombrillas' },
-          lastObservacion: { $last: '$observacion' },
-          lastHrotas: { $last: '$h_rotas' },
-          lastHrepuestas: { $last: '$h_repuestas' },
-          lastSrotas: { $last: '$s_rotas' },
-          lastSrepuestas: { $last: '$s_repuestas' },
-          lastId: { $last: '$_id' }
+          _id: "$sector",
+          lastFecha: { $last: "$fecha" },
+          lastHamacas: { $last: "$hamacas" },
+          lastSombrillas: { $last: "$sombrillas" },
+          lastObservacion: { $last: "$observacion" },
+          lastHrotas: { $last: "$h_rotas" },
+          lastHrepuestas: { $last: "$h_repuestas" },
+          lastSrotas: { $last: "$s_rotas" },
+          lastSrepuestas: { $last: "$s_repuestas" },
+          lastId: { $last: "$_id" }
         }
       },
       {
@@ -154,7 +154,7 @@ app.get('/api/hamacas/lista/ultimos', function(req, res) {
     function(err, cursor) {
       cursor.toArray(function(err, docs) {
         if (err) {
-          handleError(res, err.message, 'Failed to get aggregate del dia.');
+          handleError(res, err.message, "Failed to get aggregate del dia.");
         } else {
           res.status(200).json(docs);
         }
@@ -163,7 +163,7 @@ app.get('/api/hamacas/lista/ultimos', function(req, res) {
   );
 });
 
-app.get('/api/hamacas/lista/ultimos/fecha/:fecha', function(req, res) {
+app.get("/api/hamacas/lista/ultimos/fecha/:fecha", function(req, res) {
   db.collection(HAMACAS_COLLECTION).aggregate(
     [
       {
@@ -176,16 +176,16 @@ app.get('/api/hamacas/lista/ultimos/fecha/:fecha', function(req, res) {
       },
       {
         $group: {
-          _id: '$sector',
-          lastFecha: { $last: '$fecha' },
-          lastHamacas: { $last: '$hamacas' },
-          lastSombrillas: { $last: '$sombrillas' },
-          lastObservacion: { $last: '$observacion' },
-          lastHrotas: { $last: '$h_rotas' },
-          lastHrepuestas: { $last: '$h_repuestas' },
-          lastSrotas: { $last: '$s_rotas' },
-          lastSrepuestas: { $last: '$s_repuestas' },
-          lastId: { $last: '$_id' }
+          _id: "$sector",
+          lastFecha: { $last: "$fecha" },
+          lastHamacas: { $last: "$hamacas" },
+          lastSombrillas: { $last: "$sombrillas" },
+          lastObservacion: { $last: "$observacion" },
+          lastHrotas: { $last: "$h_rotas" },
+          lastHrepuestas: { $last: "$h_repuestas" },
+          lastSrotas: { $last: "$s_rotas" },
+          lastSrepuestas: { $last: "$s_repuestas" },
+          lastId: { $last: "$_id" }
         }
       },
       {
@@ -195,7 +195,7 @@ app.get('/api/hamacas/lista/ultimos/fecha/:fecha', function(req, res) {
     function(err, cursor) {
       cursor.toArray(function(err, docs) {
         if (err) {
-          handleError(res, err.message, 'Failed to get aggregate del dia.');
+          handleError(res, err.message, "Failed to get aggregate del dia.");
         } else {
           res.status(200).json(docs);
         }
@@ -204,7 +204,7 @@ app.get('/api/hamacas/lista/ultimos/fecha/:fecha', function(req, res) {
   );
 });
 
-app.get('/api/hamacas/maximo/:mes', function(req, res) {
+app.get("/api/hamacas/maximo/:mes", function(req, res) {
   db.collection(MAXHAMACAS_COLLECTION).aggregate(
     [
       {
@@ -218,10 +218,10 @@ app.get('/api/hamacas/maximo/:mes', function(req, res) {
       },
       {
         $group: {
-          _id: '$sector',
-          maxHamacas: { $last: '$max_hamacas' },
-          maxSombrillas: { $last: '$max_sombrillas' },
-          maxId: { $last: '$_id' }
+          _id: "$sector",
+          maxHamacas: { $last: "$max_hamacas" },
+          maxSombrillas: { $last: "$max_sombrillas" },
+          maxId: { $last: "$_id" }
         }
       },
       {
@@ -231,7 +231,7 @@ app.get('/api/hamacas/maximo/:mes', function(req, res) {
     function(err, cursor) {
       cursor.toArray(function(err, docs) {
         if (err) {
-          handleError(res, err.message, 'Failed to get aggregate maximos.');
+          handleError(res, err.message, "Failed to get aggregate maximos.");
         } else {
           res.status(200).json(docs);
         }
@@ -240,24 +240,24 @@ app.get('/api/hamacas/maximo/:mes', function(req, res) {
   );
 });
 
-app.get('/api/hamacas/activos/conductores', function(req, res) {
+app.get("/api/hamacas/activos/conductores", function(req, res) {
   db.collection(HAMACAS_COLLECTION)
     .find({ activo: true, conductor: true })
     .toArray(function(err, docs) {
       if (err) {
-        handleError(res, err.message, 'Failed to get hamacas.');
+        handleError(res, err.message, "Failed to get hamacas.");
       } else {
         res.status(200).json(docs);
       }
     });
 });
 
-app.get('/api/hamacas/:id', function(req, res) {
+app.get("/api/hamacas/:id", function(req, res) {
   db.collection(ESTADISTICAS_COLLECTION).findOne(
     { _id: new ObjectID(req.params.id) },
     function(err, doc) {
       if (err) {
-        handleError(res, err.message, 'Failed to get hamacas');
+        handleError(res, err.message, "Failed to get hamacas");
       } else {
         res.status(200).json(doc);
       }
@@ -265,7 +265,7 @@ app.get('/api/hamacas/:id', function(req, res) {
   );
 });
 
-app.put('/api/hamacas/:id', function(req, res) {
+app.put("/api/hamacas/:id", function(req, res) {
   var upfechaDoc = req.body;
   delete upfechaDoc._id;
 
@@ -274,7 +274,7 @@ app.put('/api/hamacas/:id', function(req, res) {
     { $set: upfechaDoc },
     function(err, doc) {
       if (err) {
-        handleError(res, err.message, 'Failed to upfecha hamacas');
+        handleError(res, err.message, "Failed to upfecha hamacas");
       } else {
         upfechaDoc._id = req.params.id;
         res.status(200).json(upfechaDoc);
@@ -283,12 +283,12 @@ app.put('/api/hamacas/:id', function(req, res) {
   );
 });
 
-app.delete('/api/hamacas/:id', function(req, res) {
+app.delete("/api/hamacas/:id", function(req, res) {
   db.collection(HAMACAS_COLLECTION).deleteOne(
     { _id: new ObjectID(req.params.id) },
     function(err, result) {
       if (err) {
-        handleError(res, err.message, 'Failed to delete hamacas');
+        handleError(res, err.message, "Failed to delete hamacas");
       } else {
         res.status(200).json(req.params.id);
       }
@@ -297,7 +297,7 @@ app.delete('/api/hamacas/:id', function(req, res) {
 });
 
 /* Abrimos totales hasta mes en el año */
-app.get('/api/hamacas/rotas/total/mes/:month/:year', function(req, res) {
+app.get("/api/hamacas/rotas/total/mes/:month/:year", function(req, res) {
   db.collection(HAMACAS_COLLECTION).aggregate(
     [
       {
@@ -311,20 +311,20 @@ app.get('/api/hamacas/rotas/total/mes/:month/:year', function(req, res) {
       },
       {
         $group: {
-          _id: '$sector',
-          total_h_rotas: { $sum: '$h_rotas' },
-          total_h_retiradas: { $sum: '$h_retiradas' },
-          total_h_repuestas: { $sum: '$h_repuestas' },
-          total_s_rotas: { $sum: '$s_rotas' },
-          total_s_retiradas: { $sum: '$s_retiradas' },
-          total_s_repuestas: { $sum: '$s_repuestas' }
+          _id: "$sector",
+          total_h_rotas: { $sum: "$h_rotas" },
+          total_h_retiradas: { $sum: "$h_retiradas" },
+          total_h_repuestas: { $sum: "$h_repuestas" },
+          total_s_rotas: { $sum: "$s_rotas" },
+          total_s_retiradas: { $sum: "$s_retiradas" },
+          total_s_repuestas: { $sum: "$s_repuestas" }
         }
       }
     ],
     function(err, cursor) {
       cursor.toArray(function(err, docs) {
         if (err) {
-          handleError(res, err.message, 'Failed to get aggregate del dia.');
+          handleError(res, err.message, "Failed to get aggregate del dia.");
         } else {
           res.status(200).json(docs);
         }
@@ -334,7 +334,7 @@ app.get('/api/hamacas/rotas/total/mes/:month/:year', function(req, res) {
 });
 
 /* Abrimos totales en el año */
-app.get('/api/hamacas/rotas/total/ano/:year', function(req, res) {
+app.get("/api/hamacas/rotas/total/ano/:year", function(req, res) {
   db.collection(HAMACAS_COLLECTION).aggregate(
     [
       {
@@ -347,20 +347,20 @@ app.get('/api/hamacas/rotas/total/ano/:year', function(req, res) {
       },
       {
         $group: {
-          _id: '$sector',
-          total_h_rotas: { $sum: '$h_rotas' },
-          total_h_retiradas: { $sum: '$h_retiradas' },
-          total_h_repuestas: { $sum: '$h_repuestas' },
-          total_s_rotas: { $sum: '$s_rotas' },
-          total_s_retiradas: { $sum: '$s_retiradas' },
-          total_s_repuestas: { $sum: '$s_repuestas' }
+          _id: "$sector",
+          total_h_rotas: { $sum: "$h_rotas" },
+          total_h_retiradas: { $sum: "$h_retiradas" },
+          total_h_repuestas: { $sum: "$h_repuestas" },
+          total_s_rotas: { $sum: "$s_rotas" },
+          total_s_retiradas: { $sum: "$s_retiradas" },
+          total_s_repuestas: { $sum: "$s_repuestas" }
         }
       }
     ],
     function(err, cursor) {
       cursor.toArray(function(err, docs) {
         if (err) {
-          handleError(res, err.message, 'Failed to get aggregate del dia.');
+          handleError(res, err.message, "Failed to get aggregate del dia.");
         } else {
           res.status(200).json(docs);
         }
@@ -376,20 +376,20 @@ app.get('/api/hamacas/rotas/total/ano/:year', function(req, res) {
  *    POST: creates a new localizacion
  */
 
-app.get('/api/localizacion', function(req, res) {
+app.get("/api/localizacion", function(req, res) {
   db.collection(LOCALIZACION_COLLECTION)
     .find({})
     .sort({ sector: 1 })
     .toArray(function(err, docs) {
       if (err) {
-        handleError(res, err.message, 'Failed to get localizacion.');
+        handleError(res, err.message, "Failed to get localizacion.");
       } else {
         res.status(200).json(docs);
       }
     });
 });
 
-app.post('/api/localizacion', function(req, res) {
+app.post("/api/localizacion", function(req, res) {
   var newLocalizacion = req.body;
   newLocalizacion.createfecha = new Date();
 
@@ -402,7 +402,7 @@ app.post('/api/localizacion', function(req, res) {
     doc
   ) {
     if (err) {
-      handleError(res, err.message, 'Failed to create localizacion.');
+      handleError(res, err.message, "Failed to create localizacion.");
     } else {
       res.status(201).json(doc.ops[0]);
     }
@@ -415,12 +415,12 @@ app.post('/api/localizacion', function(req, res) {
  *    DELETE: deletes localizacion by id
  */
 
-app.get('/api/localizacion/:id', function(req, res) {
+app.get("/api/localizacion/:id", function(req, res) {
   db.collection(LOCALIZACION_COLLECTION).findOne(
     { _id: new ObjectID(req.params.id) },
     function(err, doc) {
       if (err) {
-        handleError(res, err.message, 'Failed to get localizacion');
+        handleError(res, err.message, "Failed to get localizacion");
       } else {
         res.status(200).json(doc);
       }
@@ -428,7 +428,7 @@ app.get('/api/localizacion/:id', function(req, res) {
   );
 });
 
-app.put('/api/localizacion/:id', function(req, res) {
+app.put("/api/localizacion/:id", function(req, res) {
   var upfechaDoc = req.body;
   delete upfechaDoc._id;
 
@@ -437,7 +437,7 @@ app.put('/api/localizacion/:id', function(req, res) {
     { $set: upfechaDoc },
     function(err, doc) {
       if (err) {
-        handleError(res, err.message, 'Failed to upfecha localizacion');
+        handleError(res, err.message, "Failed to upfecha localizacion");
       } else {
         upfechaDoc._id = req.params.id;
         res.status(200).json(upfechaDoc);
@@ -446,12 +446,12 @@ app.put('/api/localizacion/:id', function(req, res) {
   );
 });
 
-app.delete('/api/localizacion/:id', function(req, res) {
+app.delete("/api/localizacion/:id", function(req, res) {
   db.collection(LOCALIZACION_COLLECTION).deleteOne(
     { _id: new ObjectID(req.params.id) },
     function(err, result) {
       if (err) {
-        handleError(res, err.message, 'Failed to delete localizacion');
+        handleError(res, err.message, "Failed to delete localizacion");
       } else {
         res.status(200).json(req.params.id);
       }
