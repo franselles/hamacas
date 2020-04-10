@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="col-sm">
+    <div class="text-center">SECTOR</div>
+    <div class="form-inline">
+      <div>
+        <button type="button" class="btn btn-danger" (click)="menosSector()">
+          <i class="fas fa-arrow-circle-left"></i>
+        </button>
+      </div>
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          id="sector"
+          placeholder="Fecha"
+          name="sector"
+          [(ngModel)]="sector"
+          readonly
+          style="text-align:center;"
+        />
+      </div>
+      <div>
+        <button type="button" class="btn btn-danger" (click)="masSector()">
+          <i class="fas fa-arrow-alt-circle-right"></i>
+        </button>
+      </div>
+    </div>
+    <div class="form-group text-center">
+      <label for="fecha">FECHA</label>
+      <input
+        type="date"
+        class="form-control"
+        id="fecha"
+        placeholder="Fecha"
+        name="fecha"
+        [(ngModel)]="fecha"
+        style="text-align:center;"
+        (change)="actualizaFecha()"
+      />
+    </div>
+    <button
+      type="button"
+      class="btn btn-primary btn-lg btn-block"
+      (click)="nuevo()"
+      [disabled]="existeUltFecha(sector)"
+    >
+      <i class="fas fa-plus-square"></i> Nuevo Registro
+    </button>
+  </div>
+</div>
+<div class="row mt-4" *ngIf="checkMax(sector)">
+  <div class="col-sm">
+    <div [className]="classCard">
+      <div class="card-body">
+        <h5 class="card-title">Margen de unidades</h5>
+        <p class="card-text">
+          MAX Hamacas: <strong>{{ sectorMax?.maxHamacas }}.</strong> Margen
+          <strong>{{ defHamacas }}</strong>
+        </p>
+        <p class="card-text">
+          MAX Sombrillas:
+          <strong>{{ sectorMax?.maxSombrillas }}.</strong> Margen
+          <strong>{{ defSombrillas }}</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-4" *ngIf="existeUltFecha(sector)">
+  <div class="col-sm">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">
+          Control del día {{ fecha | date: 'dd/MM/yyyy' }}
+        </h5>
+        <p class="card-text">Hamacas: {{ sectorDia.lastHamacas }}</p>
+        <p class="card-text">Sombrillas: {{ sectorDia.lastSombrillas }}</p>
+        <p class="card-text">
+          HRO: {{ sectorDia.lastHrotas }} HRE:
+          {{ sectorDia.lastHrepuestas }} SRO: {{ sectorDia.lastSrotas }} SRE:
+          {{ sectorDia.lastSrepuestas }}
+        </p>
+        <p class="card-text">Notas: {{ sectorDia.lastObservacion }}</p>
+        <a [routerLink]="['/detalle', sectorDia.lastId]" class="btn btn-primary"
+          >Editar</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="row mt-4" *ngIf="existeUlt(sector)"> -->
+<div class="row mt-4" *ngIf="global.verOculto">
+  <div class="col-sm">
+    <div class="card text-white bg-secondary mb-3">
+      <div class="card-body">
+        <h5 class="card-title">
+          Inventario del día {{ sectorUlt.lastFecha | date: 'dd/MM/yyyy' }}
+        </h5>
+        <p class="card-text">Hamacas: {{ sectorUlt.lastHamacas }}</p>
+        <p class="card-text">Sombrillas: {{ sectorUlt.lastSombrillas }}</p>
+        <p class="card-text">
+          HRO: {{ sectorUlt.lastHrotas }} HRE:
+          {{ sectorUlt.lastHrepuestas }} SRO: {{ sectorUlt.lastSrotas }} SRE:
+          {{ sectorUlt.lastSrepuestas }}
+        </p>
+        <p class="card-text">Notas: {{ sectorUlt.lastObservacion }}</p>
+        <a [routerLink]="['/detalle', sectorUlt.lastId]" class="card-link">o</a>
+      </div>
+    </div>
+  </div>
+</div>
