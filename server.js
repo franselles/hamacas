@@ -43,7 +43,7 @@ mongodb.MongoClient.connect(
     }
 
     // Save database object from the callback for reuse.
-    db = database.db("userserious");
+    db = database.db(process.env.DB_NAME);
     console.log("Database connection ready");
 
     // Initialize the app.
