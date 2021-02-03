@@ -28,7 +28,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     HamacasModule,
-    RouterModule.forRoot(routes, { useHash: true })
+    RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy' })
   ],
   declarations: [
     CoreComponent,
